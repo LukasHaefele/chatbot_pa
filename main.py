@@ -1,5 +1,6 @@
 import dspy
 import json
+from datetime import datetime
 
 with open("one-platform-chatbot-dataset.json", "r", encoding="utf-8") as f:
     raw_data = json.load(f)
@@ -82,13 +83,8 @@ def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> floa
     
     return 0.3 * source_score + 0.7 * point_score
 
-models_list = [
-    "openai/gpt-4o-mini",
-    "ollama_chat/llama3.2"
-    ]
-
 lm = dspy.LM(
-    models_list[1],
+    "ollama_chat/llama3.2",
     api_base="http://localhost:11434/v1",
     api_key="ollama"
     )
@@ -96,11 +92,16 @@ dspy.configure(lm=lm)
 
 chatbot = OnePlatformChatbot()
 
-evaluator = dspy.Evaluate(devset=devset, metric=rag_metric, num_threads=4, display_progress=True)
+dtstring = datetime.now().strftime("%y-%m-%d_%H-%M")
+eval_string = f"output/evaluator/{dtstring}.json"
+
+evaluator = dspy.Evaluate(devset=devset, metric=rag_metric, num_threads=4, display_progress=True, save_as_json=eval_string)
 baseline_score = evaluator(chatbot)
 
-optimizer = dspy.MIPROv2(metric=rag_metric, auto="light")
+auto = ["light","medium"]
+auto_index = 0
+optimizer = dspy.MIPROv2(metric=rag_metric, auto=auto[auto_index])
 opitmized_chatbot = optimizer.compile(chatbot, trainset=trainset, valset=devset)
 
 test_score = evaluator(opitmized_chatbot, devset=testset)
-opitmized_chatbot.save("optimized_chatbot.json")
+opitmized_chatbot.save(f"output/configs/optimized_chatbot_{auto[auto_index]}_{dtstring}.json")

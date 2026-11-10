@@ -1,0 +1,106 @@
+{
+  "respond.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": [
+          "[kb-azure-network] Azure-Netzwerke:\n- IPv4 address space is limited\n- smaller subnets conserve available addresses\n- subnets can be selected individually for the VNet layout\n- One-Platform-VNets und selbst verwaltete VNets haben unterschiedliche Regeln\n- direktes Peering ist nur zwischen geeigneten Custom VNets in Self-Managed Landing Zones möglich\n- Custom VNets mit Peering können kein OnPrem Connect nutzen\n- direktes Peering ist in der Standard Landing Zone blockiert\n- für Netzwerkverbindungen OnPrem Connect auf beiden Seiten und den verwalteten Transitpfad verwenden\n- alternativ Private Endpoints oder authentifizierte Anwendungsdienste nutzen\n- OnPrem Connect wird über ein Aviatrix Gateway umgesetzt\n- für verwaltete Netzwerkverbindungen wird der zentrale Transit- und Firewallpfad verwendet\n- the documented internal DNS resolution feature is currently available only in West Europe",
+          "[kb-azure-roles] Azure-Rollen:\n- die Rollen basieren auf Azure Built-in Roles\n- zusätzliche Einschränkungen schützen zentrale Plattform- und Governance-Funktionen\n- administrative Zusatzrechte werden getrennt vergeben\n- it is required when creating a VNet\n- it permits joining the centrally managed DDoS Protection Plan",
+          "[kb-azure-rbac] Azure RBAC:\n- Azure RBAC Assignment Building Block im Ziel-Tenant bestellen\n- Azure RBAC Administrator als Assignment Type wählen\n- die Object ID des Service Principals angeben\n- die Rolle enthält Bedingungen gegen Rechteausweitung\n- nur Benutzer mit der Projektrolle Project Admin dürfen das Building Block bestellen\n- die Bestellung erfolgt im Marketplace des Azure-Tenants\n- die Object ID der Enterprise Application beziehungsweise des Service Principals verwenden\n- nicht die Application ID der App Registration verwenden"
+        ],
+        "question": "Wie verbinde ich zwei verwaltete Azure VNets aus unterschiedlichen Subscriptions?",
+        "reasoning": "Aufgrund der spezifischen Regeln für die Kommunikation zwischen verwalteten Azure VNets ist es notwendig, sich in die Details der Azure RBAC und VNet-Konfiguration zu vertiefen. Da die VNets aus unterschiedlichen Subscriptions stammen, muss die Kommunikation zwischen ihnen über die Verwendung von Azure RBAC und Private Endpoints oder authentifizierten Anwendungsdiensten erfolgen. Es ist wichtig, dass die zentrale Transit- und Firewallpfade auf den beteiligten VNets verwendet werden, da diese für die Kommunikation zwischen den VNets verantwortlich sind.",
+        "answerable": true,
+        "sources": [
+          "[kb-azure-network]",
+          "[kb-azure-rbac]"
+        ],
+        "answer": "Um zwei verwaltete Azure VNets aus unterschiedlichen Subscriptions zu verbinden, müssen Sie Azure RBAC und Private Endpoints oder authentifizierte Anwendungsdienste verwenden. Hier können Sie sehen, wie es in der Azure-Dokumentation beschrieben wird: [Azure-Dokumentation]."
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-azure-roles] Azure-Rollen:\n- die Rollen basieren auf Azure Built-in Roles\n- zusätzliche Einschränkungen schützen zentrale Plattform- und Governance-Funktionen\n- administrative Zusatzrechte werden getrennt vergeben\n- it is required when creating a VNet\n- it permits joining the centrally managed DDoS Protection Plan",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen"
+        ],
+        "question": "Warum verwendet One Platform eigene Azure-Rollen statt der normalen Owner- und Contributor-Rollen?",
+        "reasoning": "Aus den bereitgestellten Kontextdokumenten ergibt sich, dass bei One Platform eigene Azure-Rollen verwendet werden, die auf den Azure Built-in Roles basieren. Diese beschränken die administrative Zugriffsrechte und bieten zusätzliche Einschränkungen, um zentrale Plattform- und Governance-Funktionen zu schützen. Damit können zudem administrative Zusatzrechte getrennt vergeben werden, was beim Erstellen eines VNet erforderlich ist. Es gibt keine expliziten Informationen darüber, warum die eigenen Azure-Rollen verwendet werden müssen als die Standardrollen, aber daraus kann abgeleitet werden, dass es sich um eine Konvention oder Vorgehensweise handelt, die im Kontext von One Platform getroffen wird.",
+        "answerable": true,
+        "sources": [
+          "[kb-azure-roles]"
+        ],
+        "answer": "Die Eigene Azure-Rollen von One Platform bieten eine höhere Sicherheit und Flexibilität im Vergleich zu den Azure-Builtin-Rollen. Durch die Verwendung eigener Rollen können zentrale Plattform- und Governance-Funktionen besser gesichert und gefestigt werden. Darüber hinaus ermöglichenThese Rollen die Trennung von administrativen Zugriffsrechten, was zu einer effizienteren Verwaltung von Cloud-Ressourcen führt."
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-entra-applications] Entra ID Applications:\n- Entra ID als Identity Provider verwenden\n- einen Service Principal für Azure-Zugriffe bereitstellen\n- begrenzten Zugriff auf Entra ID ermöglichen\n- multitenant should be enabled only when genuinely required\n- allowed tenants or service principals should be restricted\n- issuer and audience must be validated during sign-in\n- Application Permissions gelten für App-zu-App-Zugriffe ohne angemeldeten Benutzer\n- Delegated Permissions gelten im Namen eines angemeldeten Benutzers\n- bestimmte Berechtigungen benötigen Admin Consent",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-support] One Platform Support:\n- zuerst die Dokumentation prüfen\n- IT Support oder das SelfService-Formular verwenden\n- betroffenes System und Client-Umgebung in der Beschreibung angeben\n- contact the domain architects of the relevant organizational area\n- application architecture consulting is distinct from normal One Platform support\n- für One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst\n- bei einem Produktionsausfall erfolgt der Kontakt über IT Monitoring"
+        ],
+        "question": "Wofür kann eine Entra ID Application aus dem One Platform Marketplace verwendet werden?",
+        "reasoning": "Die zu verwendenden Berechtigungen können im Admin Center der Entra-Organisation auf \"Application Permissions\" eingestellt werden. Diese Berechtigungen sind für App-zu-App-Zugriffe ohne angemeldeten Benutzer relevant, was bedeutet, dass eine Entra ID Application für die Integration der Entra ID in eine Anwendung verwendet werden kann. Zudem sind \"Delegated Permissions\" für Im Namen eines angemeldeten Benutzers relevant, was die Möglichkeit einschließt, bestimmte Berechtigungen über das Selfservice-Formular zu erstellen.",
+        "answerable": true,
+        "sources": [
+          "kb-entra-applications",
+          "kb-one-platform"
+        ],
+        "answer": "Umwelt-, Compliance- und Security-Management in Cloud-Umgebungen."
+      },
+      {
+        "id": "op-030",
+        "question": "Warum kann ich in einem verwalteten AWS Account keinen IAM User manuell anlegen?",
+        "language": "de",
+        "answerable": true,
+        "expected_sources": [
+          "kb-aws-permissions"
+        ],
+        "expected_answer_points": [
+          "manuelle IAM-User-Erstellung ist aus Sicherheitsgründen blockiert",
+          "dadurch wird das Risiko dauerhafter oder verwaister Zugänge reduziert",
+          "IAM User können über den Marketplace bestellt werden"
+        ]
+      }
+    ],
+    "signature": {
+      "instructions": "Um zu überprüfen, ob die Bereitstellung Ihrer Cloud-Umgebung erfolgreich abgeschlossen ist, müssen Sie die folgenden Schritte ausführen:\n\nEin AWS-CLI-Profil für die Anmeldung über IAM Identity Center erstellen und Ihre AWS-Zugriffe authentifizieren.\n\nEinen Cloud-Working-Service in der One-Platform-Website auswählen und die erforderlichen Informationen für die Nutzung Ihres Cloud-Workspaces eingeben.\n\nDie Details zu den Workspaces und GitHub-Projekten überprüfen, um sicherzustellen, dass die Bereitstellung tatsächlich mit Ihren bestehenden Workspaces zusammenhängt.\n\nMithilfe des AWS-CLI Profils sollten Sie Ihr Profil für die Anmeldung über IAM Identity Center verifizieren und Ihre AWS-Zugriffe authentifizieren.\n\nUm sicherzustellen, dass Sie mit Ihrem Cloud-Working-Service konfiguriert sind, sollten Sie alle Projekte komplett löschen und veröffentlichte Service Broker entsperren.\n\nDie bereitgestellten Informationen sollten korrekt sein, aber es ist wichtig, die Details zu überprüfen, um sicherzustellen, dass die Bereitstellung Ihrer Cloud-Umgebung erfolgreich abgeschlossen ist.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "Retrieved knowledge base documents with [doc_id]"
+        },
+        {
+          "prefix": "Question:",
+          "description": "User question in German or English"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answerable:",
+          "description": "True if answerable from context, False otherwise"
+        },
+        {
+          "prefix": "Sources:",
+          "description": "List of document IDs used, e.g. ['kb-ews-cli'], or [] if unanswerable"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "Concise answer covering the key points in the question's language"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.14",
+      "dspy": "3.4.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}
