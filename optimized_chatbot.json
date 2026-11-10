@@ -1,0 +1,104 @@
+{
+  "respond.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": [
+          "[kb-nexus] Nexus Repository Manager:\n- pip auf das Nexus-Python-Repository konfigurieren\n- in Azure DevOps die bereitgestellte Service Connection und PipAuthenticate verwenden\n- lokal die pip-Konfiguration und einen User Token verwenden\n- persönlichen Zugriff über den Marketplace buchen\n- Nexus unterstützt Single Sign-On\n- User Token und Passcode in den persönlichen Nexus-Einstellungen abrufen\n- request a Nexus technical user through the marketplace\n- use technical rather than personal credentials\n- select only the required read or write permissions\n- One Platform Azure DevOps projects receive Nexus service connections automatically\n- separate credentials are not required for the supported Azure DevOps workflow\n- persönlichen Zugang für die lokale Entwicklung verwenden\n- technischen Benutzer für externe CI/CD-Systeme verwenden\n- persönliche Benutzer haben nur Leserechte\n- technische Benutzer können auf benötigte Lese- oder Schreibrechte begrenzt werden",
+          "[kb-sonarqube] SonarQube:\n- die Synchronisierung kann bis zu 90 Minuten dauern\n- für die Zuordnung sollte ein SonarQube-Projekt gebucht sein\n- an external CI system needs credentials\n- a technical user is preferred over a personal user\n- credentials or user tokens must be stored securely and not committed to source control",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen"
+        ],
+        "question": "How should a CI system outside One Platform authenticate to a private Nexus repository?",
+        "reasoning": "Um sicherzustellen, dass der CI-Schritt korrekte Aufschlüsselungen durchführen kann, sollte die authentifizierte Verbindung zu einer privaten Nexus-Repository-Einrichtung wie folgt durchgeführt werden:\nMit credentials oder User-Token muss gesichert werden und dieser nicht in der Quellkontrolle vertraulich aufbewahrt werden darf.\nAußerdem sollte eine technische Benutzerkonto bevorzugt über ein persönliches Benutzerkonto verwendet werden.\nBei Bedarf sollten nur die dafür benötigten Lese- oder Schreibrechte zugewiesen werden.",
+        "answerable": true,
+        "sources": [
+          "kb-sonarqube",
+          "kb-one-platform"
+        ],
+        "answer": "Mit credentials oder User-Token muss gesichert werden, und eine technische Userkonto bevorzugt über ein persönliches Benutzerkonto verwendet werden sollte."
+      },
+      {
+        "id": "op-020",
+        "question": "Wie berechtige ich einen Service Principal zur Verwaltung von Azure-Rollenzuweisungen?",
+        "language": "de",
+        "answerable": true,
+        "expected_sources": [
+          "kb-azure-rbac"
+        ],
+        "expected_answer_points": [
+          "Azure RBAC Assignment Building Block im Ziel-Tenant bestellen",
+          "Azure RBAC Administrator als Assignment Type wählen",
+          "die Object ID des Service Principals angeben",
+          "die Rolle enthält Bedingungen gegen Rechteausweitung"
+        ]
+      },
+      {
+        "id": "op-027",
+        "question": "What should I consider before making an Entra ID application multitenant?",
+        "language": "en",
+        "answerable": true,
+        "expected_sources": [
+          "kb-entra-applications"
+        ],
+        "expected_answer_points": [
+          "multitenant should be enabled only when genuinely required",
+          "allowed tenants or service principals should be restricted",
+          "issuer and audience must be validated during sign-in"
+        ]
+      },
+      {
+        "id": "op-028",
+        "question": "Was ist der Unterschied zwischen Application Permissions und Delegated Permissions bei einer Entra ID Application?",
+        "language": "de",
+        "answerable": true,
+        "expected_sources": [
+          "kb-entra-applications"
+        ],
+        "expected_answer_points": [
+          "Application Permissions gelten für App-zu-App-Zugriffe ohne angemeldeten Benutzer",
+          "Delegated Permissions gelten im Namen eines angemeldeten Benutzers",
+          "bestimmte Berechtigungen benötigen Admin Consent"
+        ]
+      }
+    ],
+    "signature": {
+      "instructions": "Um einen AWS-CLI-Profil für eine bestimmte AWS-Konto oder Rollen zu konfigurieren und temporäre Zugangsdaten für ein SonarQube-Projekt zu erhalten, müssen Sie das Profil wie folgt einrichten:\n1. Profil mit AWS IAM Identity Center konfigurieren.\n2. SSO-Start-URL und Region angeben.\n3. einen Profilnamen festlegen.\n4. aws sso login verwenden und dann die Befehle `aws sso logout` verwenden, um die aktuelle Anmeldung neu zu konfigurieren.\n5. ein neues Profil auswählen, das die notwendigen Zugangsdaten enthält.\n\nBeachten Sie, dass Sie ein berechtigtes Profil auswählen müssen, das Ihren IAM-Identitäts-Zentrum-Profilnamen und SSO-Start-URL enthält.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "Retrieved knowledge base documents with [doc_id]"
+        },
+        {
+          "prefix": "Question:",
+          "description": "User question in German or English"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answerable:",
+          "description": "True if answerable from context, False otherwise"
+        },
+        {
+          "prefix": "Sources:",
+          "description": "List of document IDs used, e.g. ['kb-ews-cli'], or [] if unanswerable"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "Concise answer covering the key points in the question's language"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.14",
+      "dspy": "3.4.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}

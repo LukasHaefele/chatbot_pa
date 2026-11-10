@@ -28,7 +28,7 @@ corpus = [
 embedder = dspy.Embedder(
     "ollama/nomic-embed-text",
     api_base="http://localhost:11434",
-    api_key=""
+    api_key="ollama"
     )
 search = dspy.retrievers.Embeddings(embedder=embedder, corpus=corpus, k=3)
 
@@ -89,8 +89,8 @@ models_list = [
 
 lm = dspy.LM(
     models_list[1],
-    api_base="http://localhost:11434",
-    api_key=""
+    api_base="http://localhost:11434/v1",
+    api_key="ollama"
     )
 dspy.configure(lm=lm)
 
