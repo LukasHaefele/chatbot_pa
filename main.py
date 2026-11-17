@@ -1,6 +1,7 @@
 import dspy
 import json
 from datetime import datetime
+from typing import Literal
 
 with open("one-platform-chatbot-dataset.json", "r", encoding="utf-8") as f:
     raw_data = json.load(f)
@@ -58,20 +59,41 @@ class GradeAnswerPoints(dspy.Signature):
     predicted_answer: str = dspy.InputField()
     expected_points: list[str] = dspy.InputField()
     covered_points_count: int = dspy.OutputField(desc="Number of expected_points accurately present in predicted_answer")
+    detected_language: Literal["de", "en"] = dspy.OutputField(desc="Language of predicted_answer: 'de' for German, 'en' for English")
     
 judge = dspy.Predict(GradeAnswerPoints)
 
 def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> float:
     
+    pred.answerable_score = 1.0
+    pred.source_score = 0.0
+    pred.point_score = 0.0
+    pred.correct_count = 0.0
+    pred.incorrect_count = 0.0
+    pred.missing_count = 0.0
+    pred.language_score = 0.0
     if bool(pred.answerable) != bool(example.answerable):
-        return 0.0
+        pred.answerable_score = 0.0
+        # return 0.0
+    
     
     expected_src = set(example.expected_sources)
     pred_src = set(pred.sources or [])
-    if not expected_src:
-        source_score = 1.0 if not pred_src else 0.0
-    else:
-        source_score = len(expected_src & pred_src) / len(expected_src | pred_src)
+    correct_count = 0.0
+    incorrect_count = 0.0
+    for src in pred_src:
+        if expected_src.__contains__(src):
+            correct_count += 1.0
+            expected_src.remove(src)
+        else:
+            incorrect_count += 1.0
+    missing_count = len(expected_src)
+    
+    source_score = correct_count / max((missing_count + incorrect_count + correct_count), 1)
+    pred.correct_count = correct_count
+    pred.incorrect_count = incorrect_count
+    pred.missing_count = missing_count
+    pred.source_score = source_score
     
     points = example.expected_answer_points
     graded = judge(
@@ -80,28 +102,35 @@ def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> floa
         expected_points = points
     )
     point_score = min(max(int(graded.covered_points_count), 0), len(points)) / len(points)
+    pred.point_score = point_score
     
-    return 0.3 * source_score + 0.7 * point_score
+    language_score = 1.0 if graded.detected_language == example.language else 0.0
+    pred.answer_language = graded.detected_language
+    pred.language_score = language_score
+    
+    return 0.25 * source_score + 0.65 * point_score + 0.1 * language_score
 
 lm = dspy.LM(
     "ollama_chat/llama3.2",
     api_base="http://localhost:11434/v1",
-    api_key="ollama"
+    api_key="ollama",
+    cache=False
     )
 dspy.configure(lm=lm)
 
 chatbot = OnePlatformChatbot()
 
 dtstring = datetime.now().strftime("%y-%m-%d_%H-%M")
-eval_string = f"output/evaluator/{dtstring}.json"
+eval_string = f"output/evaluator/dev/{dtstring}.json"
 
 evaluator = dspy.Evaluate(devset=devset, metric=rag_metric, num_threads=4, display_progress=True, save_as_json=eval_string)
 baseline_score = evaluator(chatbot)
 
-auto = ["light","medium"]
-auto_index = 0
+auto = ["light","medium", "heavy"]
+auto_index = 2
 optimizer = dspy.MIPROv2(metric=rag_metric, auto=auto[auto_index])
 opitmized_chatbot = optimizer.compile(chatbot, trainset=trainset, valset=devset)
 
-test_score = evaluator(opitmized_chatbot, devset=testset)
+test_string = f"output/evaluator/test/{dtstring}.json"
+test_score = evaluator(opitmized_chatbot, devset=testset, num_threads=4, display_progress=True, save_as_json=test_string)
 opitmized_chatbot.save(f"output/configs/optimized_chatbot_{auto[auto_index]}_{dtstring}.json")
