@@ -1,0 +1,12 @@
+[project]
+name = "chatbot-pa"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "dspy==3.4.1",
+    "lingua-language-detector>=2.2.0",
+    "numpy>=2.5.5",
+    "optuna>=5.1.0",
+]
