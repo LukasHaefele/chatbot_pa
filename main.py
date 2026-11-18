@@ -81,53 +81,68 @@ class GradeAnswerPoints(dspy.Signature):
     
 judge = dspy.Predict(GradeAnswerPoints)
 
-def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> float:
-    
-    pred.answerable_score = 1.0
-    pred.source_score = 0.0
-    pred.point_score = 0.0
-    pred.correct_count = 0.0
-    pred.incorrect_count = 0.0
-    pred.missing_count = 0.0
-    pred.language_score = 0.0
-    if bool(pred.answerable) != bool(example.answerable):
-        pred.answerable_score = 0.0
-        # return 0.0
-    
-    
+judge_lm = dspy.LM(
+    "ollama_chat/gemma3:12b",
+    api_base="http://localhost:11434/v1",
+    api_key="ollama",
+    temperature=0.0,
+    cache=True,
+)
+
+def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None):
+    # 1. Answerable decision
+    answerable_score = 1.0 if bool(pred.answerable) == bool(example.answerable) else 0.0
+
+    # 2. Sources (Jaccard; both empty = perfect)
     expected_src = set(example.expected_sources)
     pred_src = set(pred.sources or [])
-    correct_count = 0.0
-    incorrect_count = 0.0
-    for src in pred_src:
-        if expected_src.__contains__(src):
-            correct_count += 1.0
-            expected_src.remove(src)
-        else:
-            incorrect_count += 1.0
-    missing_count = len(expected_src)
-    
-    source_score = correct_count / max((missing_count + incorrect_count + correct_count), 1)
-    pred.correct_count = correct_count
-    pred.incorrect_count = incorrect_count
-    pred.missing_count = missing_count
-    pred.source_score = source_score
-    
-    points = example.expected_answer_points
-    graded = judge(
-        question=example.question,
-        predicted_answer=pred.answer,
-        expected_points = points
-    )
-    point_score = min(max(int(graded.covered_points_count), 0), len(points)) / len(points)
-    pred.point_score = point_score
+    union = expected_src | pred_src
+    correct = len(expected_src & pred_src)
+    source_score = correct / len(union) if union else 1.0
 
+    # 3. Answer points (LLM judge)
+    points = example.expected_answer_points
+    if points:
+        try:
+            with dspy.context(lm=judge_lm):
+                graded = judge(
+                    question=example.question,
+                    predicted_answer=pred.answer,
+                    expected_points=points,
+                )
+            covered = int(graded.covered_points_count)
+        except Exception:
+            covered = 0
+        point_score = min(max(covered, 0), len(points)) / len(points)
+    else:
+        point_score = 1.0
+
+    # 4. Language
     detected_language = detect_language(pred.answer)
     language_score = 1.0 if detected_language == example.language else 0.0
-    pred.answer_language = detected_language
+
+    # Keep the debug fields for the saved JSON
+    pred.answerable_score = answerable_score
+    pred.source_score = source_score
+    pred.point_score = point_score
     pred.language_score = language_score
-    
-    return 0.25 * source_score + 0.65 * point_score + 0.1 * language_score
+    pred.answer_language = detected_language
+    pred.correct_count = correct
+    pred.incorrect_count = len(pred_src - expected_src)
+    pred.missing_count = len(expected_src - pred_src)
+
+    score = (
+        0.15 * answerable_score
+        + 0.20 * source_score
+        + 0.55 * point_score
+        + 0.10 * language_score
+    )
+
+    # During bootstrapping, return pass/fail so only good traces become demos
+    if trace is not None:
+        return score >= 0.8
+    return score
+
 
 prompt_lm = dspy.LM(
     "ollama_chat/gemma3:12b",
@@ -142,7 +157,8 @@ lm = dspy.LM(
     "ollama_chat/llama3.2",
     api_base="http://localhost:11434/v1",
     api_key="ollama",
-    cache=False
+    temperature= 0.0,
+    cache=True,
     )
 dspy.configure(lm=lm)
 
@@ -162,3 +178,4 @@ opitmized_chatbot = optimizer.compile(chatbot, trainset=trainset, valset=devset)
 test_string = f"output/evaluator/test/{dtstring}.json"
 test_score = evaluator(opitmized_chatbot, devset=testset, num_threads=4, display_progress=True, save_as_json=test_string)
 opitmized_chatbot.save(f"output/configs/optimized_chatbot_{auto[auto_index]}_{dtstring}.json")
+

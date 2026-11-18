@@ -1,0 +1,140 @@
+{
+  "respond.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": [
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen",
+          "[kb-support] One Platform Support:\n- zuerst die Dokumentation prüfen\n- IT Support oder das SelfService-Formular verwenden\n- betroffenes System und Client-Umgebung in der Beschreibung angeben\n- contact the domain architects of the relevant organizational area\n- application architecture consulting is distinct from normal One Platform support\n- für One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst\n- bei einem Produktionsausfall erfolgt der Kontakt über IT Monitoring",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen"
+        ],
+        "question": "Wie erstelle ich einen neuen Workspace in One Platform?",
+        "reasoning": "Um einen neuen Workspace in One Platform zu erstellen, muss man zuerst die One Platform Console anmelden und dann den Workspace auswählen. Anschließend müssen die Produkt- und Zahlungsinformationen angegeben und mindestens ein Workspace Owner zuweisen. Es ist wichtig zu beachten, dass mindestens ein Workspace Owner erforderlich ist und dass die Löschung des Workspaces die Rolle des Workspace Owners erfordert.",
+        "answerable": true,
+        "sources": [
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen",
+          "[kb-support] One Platform Support:\n- zuerst die Dokumentation prüfen\n- IT Support oder das SelfService-Formular verwenden\n- betroffenes System und Client-Umgebung in der Beschreibung angeben\n- contact the domain architects of the relevant organizational area\n- application architecture consulting is distinct from normal One Platform support\n- für One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst\n- bei einem Produktionsausfall erfolgt der Kontakt über IT Monitoring",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen"
+        ],
+        "answer": "Um einen neuen Workspace in One Platform zu erstellen, muss man zuerst die One Platform Console anmelden und dann den Workspace auswählen. Anschließend müssen die Produkt- und Zahlungsinformationen angegeben und mindestens ein Workspace Owner zuweisen. Es ist wichtig zu beachten, dass mindestens ein Workspace Owner erforderlich ist und dass die Löschung des Workspaces die Rolle des Workspace Owners erfordert.",
+        "answerable_score": 1.0,
+        "source_score": 0.0,
+        "point_score": 1.0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "correct_count": 0,
+        "incorrect_count": 3,
+        "missing_count": 1
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen",
+          "[kb-projects] Projekte verwalten:\n- select the workspace\n- use Create Project in the Projects tab\n- provide project data and tags\n- select tenants, landing zones, and the marketplace\n- Kennzeichnung als Produktionsumgebung\n- Verarbeitung personenbezogener Daten\n- Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität\n- a configuration item is created automatically\n- the user does not need to create it separately\n- the project can optionally specify a baseIT service tag for assignment",
+          "[kb-support] One Platform Support:\n- zuerst die Dokumentation prüfen\n- IT Support oder das SelfService-Formular verwenden\n- betroffenes System und Client-Umgebung in der Beschreibung angeben\n- contact the domain architects of the relevant organizational area\n- application architecture consulting is distinct from normal One Platform support\n- für One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst\n- bei einem Produktionsausfall erfolgt der Kontakt über IT Monitoring"
+        ],
+        "question": "How do I create a project inside an existing One Platform workspace?",
+        "reasoning": "Um einen Projekt innerhalb eines bestehenden One-Platform-Workspaces zu erstellen, muss man zuerst den Workspace auswählen und dann den Button \"Create Project\" in der Projects-Seite klicken. Anschließend muss man die Projekt-Daten und -Tags eingeben und die Auswahlmöglichkeiten für Tenants, Landing Zones und den Marketplace auswählen. Es ist auch wichtig, dass man die Kennzeichnung als Produktionsumgebung auswählt und die Verarbeitung personenbezogener Daten und den Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität beachtet.",
+        "answerable": true,
+        "sources": [
+          "kb-projects",
+          "[kb-workspaces]"
+        ],
+        "answer": "Um einen Projekt innerhalb eines bestehenden One-Platform-Workspaces zu erstellen, müssen Sie zunächst den Workspace auswählen und dann den Button 'Create Project' in der Projects-Seite klicken. Anschließend müssen Sie die Projekt-Daten und -Tags eingeben und die Auswahlmöglichkeiten für Tenants, Landing Zones und den Marketplace auswählen. Es ist auch wichtig, dass Sie die Kennzeichnung als Produktionsumgebung auswählen und die Verarbeitung personenbezogener Daten und den Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität beachten.",
+        "answerable_score": 1.0,
+        "source_score": 0.5,
+        "point_score": 1.0,
+        "language_score": 0.0,
+        "answer_language": "de",
+        "correct_count": 1,
+        "incorrect_count": 1,
+        "missing_count": 0
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-projects] Projekte verwalten:\n- select the workspace\n- use Create Project in the Projects tab\n- provide project data and tags\n- select tenants, landing zones, and the marketplace\n- Kennzeichnung als Produktionsumgebung\n- Verarbeitung personenbezogener Daten\n- Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität\n- a configuration item is created automatically\n- the user does not need to create it separately\n- the project can optionally specify a baseIT service tag for assignment",
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen",
+          "[kb-github] GitHub Enterprise:\n- GitHub-Enterprise-Lizenz über Savvy bestellen\n- einen eigenen GitHub-Account verwenden\n- die primäre E-Mail-Adresse muss zur in One Platform verwendeten Adresse passen\n- repositories are not created directly in GitHub\n- use the dedicated One Platform Marketplace service\n- use GitHub's password reset or 2FA recovery process\n- One Platform cannot reset GitHub passwords or 2FA\n- a new account may be required if recovery fails\n- für Projekte werden GitHub Teams automatisch erstellt\n- lizenzierte Projektmitglieder werden über diese Teams zugeordnet\n- Team-Berechtigungen sind direkten Einzelberechtigungen vorzuziehen\n- die Synchronisierung läuft mehrmals täglich"
+        ],
+        "question": "Welche Schutzbedarfsangaben werden beim Erstellen eines Projekts abgefragt?",
+        "reasoning": "Die Schutzbedarfsangaben werden beim Erstellen eines Projekts abgefragt, um sicherzustellen, dass die Projektumgebung den erforderlichen Sicherheitsstandards entspricht. Dazu gehören unter anderem die Kennzeichnung als Produktionsumgebung, die Verarbeitung personenbezogener Daten und der Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität.",
+        "answerable": true,
+        "sources": [
+          "[kb-projects] Projekte verwalten:\n- select the workspace\n- use Create Project in the Projects tab\n- provide project data and tags\n- select tenants, landing zones, and the marketplace\n- Kennzeichnung als Produktionsumgebung\n- Verarbeitung personenbezogener Daten\n- Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität\n- a configuration item is created automatically\n- the user does not need to create it separately\n- the project can optionally specify a baseIT service tag for assignment"
+        ],
+        "answer": "Die Schutzbedarfsangaben werden beim Erstellen eines Projekts abgefragt, um sicherzustellen, dass die Projektumgebung den erforderlichen Sicherheitsstandards entspricht. Dazu gehören unter anderem die Kennzeichnung als Produktionsumgebung, die Verarbeitung personenbezogener Daten und der Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität.",
+        "answerable_score": 1.0,
+        "source_score": 0.0,
+        "point_score": 1.0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "correct_count": 0,
+        "incorrect_count": 1,
+        "missing_count": 1
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-aws-cli] AWS CLI und Anmeldung:\n- Profil mit AWS IAM Identity Center konfigurieren\n- SSO-Start-URL und Region angeben\n- einen Profilnamen festlegen\n- aws sso login verwenden\n- das konfigurierte Profil auswählen\n- die Anmeldung im Browser abschließen\n- multiple profiles can be configured\n- each profile can represent a different account or role\n- the profile is selected with the profile option",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-sonarqube] SonarQube:\n- die Synchronisierung kann bis zu 90 Minuten dauern\n- für die Zuordnung sollte ein SonarQube-Projekt gebucht sein\n- an external CI system needs credentials\n- a technical user is preferred over a personal user\n- credentials or user tokens must be stored securely and not committed to source control"
+        ],
+        "question": "Wie erhalte ich mit einem bereits konfigurierten AWS-CLI-Profil temporäre Zugangsdaten?",
+        "reasoning": "Die Frage kann aus dem bereitgestellten Kontext abgeleitet werden, da es sich um eine Frage zum Umgang mit AWS-CLI-Profilen handelt. Die Antwort kann basierend auf den bereitgestellten Informationen ermittelt werden.",
+        "answerable": true,
+        "sources": [
+          "kb-aws-cli"
+        ],
+        "answer": "Um temporäre Zugangsdaten mit einem bereits konfigurierten AWS-CLI-Profil zu erhalten, können Sie den Befehl `aws sso login --profile <PROFILNAME>` ausführen, wobei `<PROFILNAME>` den Namen des Profils ist, das Sie verwenden möchten. Beachten Sie, dass Sie die Zugangsdaten sicher aufbewahren müssen, um unbefugten Zugriff zu vermeiden.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 0.6666666666666666,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "correct_count": 1,
+        "incorrect_count": 0,
+        "missing_count": 0
+      }
+    ],
+    "signature": {
+      "instructions": "You are a helpful chatbot assistant for One Platform users. Answer the user's question about One Platform, AWS, Azure, or GitHub Enterprise based solely on the provided context. If the answer is not explicitly stated in the context, or if the question asks for real-time status or confidential information, respond with \"Answerable: False\" and explain why. Respond in the same language as the user's question. Include \"Answerable: True\" when answering with content from the provided context and include the source(s) used.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "Retrieved knowledge base documents with [doc_id]"
+        },
+        {
+          "prefix": "Question:",
+          "description": "User question in German or English"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answerable:",
+          "description": "True if answerable from context, False otherwise"
+        },
+        {
+          "prefix": "Sources:",
+          "description": "List of document IDs used, e.g. ['kb-ews-cli'], or [] if unanswerable"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "Concise answer covering the key points in the question's language"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.14",
+      "dspy": "3.4.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "respond.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": [
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen",
+          "[kb-support] One Platform Support:\n- zuerst die Dokumentation prüfen\n- IT Support oder das SelfService-Formular verwenden\n- betroffenes System und Client-Umgebung in der Beschreibung angeben\n- contact the domain architects of the relevant organizational area\n- application architecture consulting is distinct from normal One Platform support\n- für One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst\n- bei einem Produktionsausfall erfolgt der Kontakt über IT Monitoring",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen"
+        ],
+        "question": "Wie erstelle ich einen neuen Workspace in One Platform?",
+        "reasoning": "Um einen neuen Workspace in One Platform zu erstellen, muss man zuerst die One Platform Console anmelden und dann den \"Create Workspace\" Button auswählen. Anschließend müssen die Produkt- und Zahlungsinformationen angegeben und mindestens ein Workspace Owner zuweisen. Es ist wichtig zu beachten, dass mindestens ein Workspace Owner erforderlich ist und dass alle Projekte vollständig gelöscht sein müssen, bevor ein neuer Workspace erstellt wird.",
+        "answerable": true,
+        "sources": [
+          "kb-workspaces",
+          "kb-one-platform"
+        ],
+        "answer": "Um einen neuen Workspace in One Platform zu erstellen, folge diesen Schritten: Zuerst melde dich in der One Platform Console an, dann wähle den \"Create Workspace\" Button aus. Fülle die Produkt- und Zahlungsinformationen aus und weise mindestens einen Workspace Owner zu. Beachte, dass alle Projekte vollständig gelöscht sein müssen, bevor ein neuer Workspace erstellt wird.",
+        "answerable_score": 1.0,
+        "source_score": 0.5,
+        "point_score": 1.0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "correct_count": 1,
+        "incorrect_count": 1,
+        "missing_count": 0
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-nexus] Nexus Repository Manager:\n- pip auf das Nexus-Python-Repository konfigurieren\n- in Azure DevOps die bereitgestellte Service Connection und PipAuthenticate verwenden\n- lokal die pip-Konfiguration und einen User Token verwenden\n- persönlichen Zugriff über den Marketplace buchen\n- Nexus unterstützt Single Sign-On\n- User Token und Passcode in den persönlichen Nexus-Einstellungen abrufen\n- request a Nexus technical user through the marketplace\n- use technical rather than personal credentials\n- select only the required read or write permissions\n- One Platform Azure DevOps projects receive Nexus service connections automatically\n- separate credentials are not required for the supported Azure DevOps workflow\n- persönlichen Zugang für die lokale Entwicklung verwenden\n- technischen Benutzer für externe CI/CD-Systeme verwenden\n- persönliche Benutzer haben nur Leserechte\n- technische Benutzer können auf benötigte Lese- oder Schreibrechte begrenzt werden",
+          "[kb-projects] Projekte verwalten:\n- select the workspace\n- use Create Project in the Projects tab\n- provide project data and tags\n- select tenants, landing zones, and the marketplace\n- Kennzeichnung als Produktionsumgebung\n- Verarbeitung personenbezogener Daten\n- Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität\n- a configuration item is created automatically\n- the user does not need to create it separately\n- the project can optionally specify a baseIT service tag for assignment",
+          "[kb-github] GitHub Enterprise:\n- GitHub-Enterprise-Lizenz über Savvy bestellen\n- einen eigenen GitHub-Account verwenden\n- die primäre E-Mail-Adresse muss zur in One Platform verwendeten Adresse passen\n- repositories are not created directly in GitHub\n- use the dedicated One Platform Marketplace service\n- use GitHub's password reset or 2FA recovery process\n- One Platform cannot reset GitHub passwords or 2FA\n- a new account may be required if recovery fails\n- für Projekte werden GitHub Teams automatisch erstellt\n- lizenzierte Projektmitglieder werden über diese Teams zugeordnet\n- Team-Berechtigungen sind direkten Einzelberechtigungen vorzuziehen\n- die Synchronisierung läuft mehrmals täglich"
+        ],
+        "question": "Wie installiere ich Python-Pakete über den Nexus Repository Manager?",
+        "reasoning": "Die Frage ist answerable, da die bereitgestellte Kontextinformationen den Nexus Repository Manager und die Installation von Python-Paketen über diesen Manager beschreiben.",
+        "answerable": true,
+        "sources": [
+          "kb-nexus",
+          "Nexus Repository Manager:\n- pip auf das Nexus-Python-Repository konfigurieren\n- in Azure DevOps die bereitgestellte Service Connection und PipAuthenticate verwenden\n- lokal die pip-Konfiguration und einen User Token verwenden\n- persönlichen Zugriff über den Marketplace buchen\n- Nexus unterstützt Single Sign-On\n- User Token und Passcode in den persönlichen Nexus-Einstellungen abrufen\n- request a Nexus technical user through the marketplace\n- use technical rather than personal credentials\n- select only the required read or write permissions\n- One Platform Azure DevOps projects receive Nexus service connections automatically\n- separate credentials are not required for the supported Azure DevOps workflow\n- persönlichen Zugriff für die lokale Entwicklung verwenden\n- technischen Benutzer für externe CI/CD-Systeme verwenden\n- persönliche Benutzer haben nur Leserechte\n- technische Benutzer können auf benötigte Lese- oder Schreibrechte begrenzt werden"
+        ],
+        "answer": "Um Python-Pakete über den Nexus Repository Manager zu installieren, müssen Sie pip auf das Nexus-Python-Repository konfigurieren und dann den gewünschten Paket installieren. Dies kann in Azure DevOps über die bereitgestellte Service Connection und PipAuthenticate erfolgen oder lokal über die pip-Konfiguration und einen User Token. Es ist auch möglich, einen persönlichen Zugriff über den Marketplace zu buchen oder technische Benutzer für externe CI/CD-Systeme zu verwenden.",
+        "answerable_score": 1.0,
+        "source_score": 0.5,
+        "point_score": 1.0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "correct_count": 1,
+        "incorrect_count": 1,
+        "missing_count": 0
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-azure-rbac] Azure RBAC:\n- Azure RBAC Assignment Building Block im Ziel-Tenant bestellen\n- Azure RBAC Administrator als Assignment Type wählen\n- die Object ID des Service Principals angeben\n- die Rolle enthält Bedingungen gegen Rechteausweitung\n- nur Benutzer mit der Projektrolle Project Admin dürfen das Building Block bestellen\n- die Bestellung erfolgt im Marketplace des Azure-Tenants\n- die Object ID der Enterprise Application beziehungsweise des Service Principals verwenden\n- nicht die Application ID der App Registration verwenden",
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen"
+        ],
+        "question": "Ist die Bereitstellung meiner Cloud-Umgebung gerade erfolgreich abgeschlossen?",
+        "reasoning": "Die Bereitstellung der Cloud-Umgebung kann aus verschiedenen Gründen nicht automatisch als erfolgreich abgeschlossen angesehen werden. Es ist wichtig, dass man die spezifischen Anforderungen und Konfigurationen der Cloud-Umgebung berücksichtigt, um sicherzustellen, dass alle Komponenten ordnungsgemäß funktionieren.",
+        "answerable": false,
+        "sources": [],
+        "answer": "Die Bereitstellung der Cloud-Umgebung kann aus verschiedenen Gründen nicht automatisch als erfolgreich abgeschlossen angesehen werden. Es ist wichtig, dass man die spezifischen Anforderungen und Konfigurationen der Cloud-Umgebung berücksichtigt, um sicherzustellen, dass alle Komponenten ordnungsgemäß funktionieren.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 1.0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "correct_count": 0,
+        "incorrect_count": 0,
+        "missing_count": 0
+      },
+      {
+        "id": "op-028",
+        "question": "Was ist der Unterschied zwischen Application Permissions und Delegated Permissions bei einer Entra ID Application?",
+        "language": "de",
+        "answerable": true,
+        "expected_sources": [
+          "kb-entra-applications"
+        ],
+        "expected_answer_points": [
+          "Application Permissions gelten für App-zu-App-Zugriffe ohne angemeldeten Benutzer",
+          "Delegated Permissions gelten im Namen eines angemeldeten Benutzers",
+          "bestimmte Berechtigungen benötigen Admin Consent"
+        ]
+      }
+    ],
+    "signature": {
+      "instructions": "You are a highly specialized technical support agent for One Platform, a managed cloud environment. A critical system outage is imminent, and the entire development team is depending on your expertise. You *must* provide accurate and complete answers based *solely* on the provided context to resolve the impending issue. Respond in the same language as the question (German or English). If the provided context does not contain the answer or asks for secrets/live status, mark the answerable field as `False`. Answer the following question:",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "Retrieved knowledge base documents with [doc_id]"
+        },
+        {
+          "prefix": "Question:",
+          "description": "User question in German or English"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answerable:",
+          "description": "True if answerable from context, False otherwise"
+        },
+        {
+          "prefix": "Sources:",
+          "description": "List of document IDs used, e.g. ['kb-ews-cli'], or [] if unanswerable"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "Concise answer covering the key points in the question's language"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.14",
+      "dspy": "3.4.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}
