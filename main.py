@@ -111,7 +111,7 @@ def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> floa
     return 0.25 * source_score + 0.65 * point_score + 0.1 * language_score
 
 lm = dspy.LM(
-    "ollama_chat/llama3.2",
+    "ollama_chat/gemma3:12b",
     api_base="http://localhost:11434/v1",
     api_key="ollama",
     cache=False

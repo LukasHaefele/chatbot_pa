@@ -1,0 +1,135 @@
+{
+  "respond.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": [
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-support] One Platform Support:\n- zuerst die Dokumentation prüfen\n- IT Support oder das SelfService-Formular verwenden\n- betroffenes System und Client-Umgebung in der Beschreibung angeben\n- contact the domain architects of the relevant organizational area\n- application architecture consulting is distinct from normal One Platform support\n- für One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst\n- bei einem Produktionsausfall erfolgt der Kontakt über IT Monitoring",
+          "[kb-sonarqube] SonarQube:\n- die Synchronisierung kann bis zu 90 Minuten dauern\n- für die Zuordnung sollte ein SonarQube-Projekt gebucht sein\n- an external CI system needs credentials\n- a technical user is preferred over a personal user\n- credentials or user tokens must be stored securely and not committed to source control"
+        ],
+        "question": "Which compliance and security capabilities are included when using One Platform?",
+        "reasoning": "The context mentions \"compliant central logging\", \"preconfigured cloud security tools\", and \"central identity and access management with SSO and MFA\" as capabilities of One Platform. These clearly address compliance and security.",
+        "answerable": true,
+        "sources": [
+          "kb-one-platform"
+        ],
+        "answer": "One Platform includes compliant central logging, preconfigured cloud security tools, and central identity and access management with SSO and MFA.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 0.75,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "en"
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-support] One Platform Support:\n- zuerst die Dokumentation prüfen\n- IT Support oder das SelfService-Formular verwenden\n- betroffenes System und Client-Umgebung in der Beschreibung angeben\n- contact the domain architects of the relevant organizational area\n- application architecture consulting is distinct from normal One Platform support\n- für One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst\n- bei einem Produktionsausfall erfolgt der Kontakt über IT Monitoring",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen"
+        ],
+        "question": "Wie reiche ich eine Supportanfrage für One Platform ein?",
+        "reasoning": "The context states that to request One Platform support, you should first check the documentation, use IT support or the self-service form, specify the affected system and client environment in the description, and contact the domain architects of the relevant organizational area. It also mentions a 24x7 on-call service for One Platform components and contact via IT Monitoring for production outages.",
+        "answerable": true,
+        "sources": [
+          "kb-support"
+        ],
+        "answer": "Um eine Supportanfrage für One Platform einzureichen, prüfen Sie zunächst die Dokumentation, verwenden Sie den IT-Support oder das Self-Service-Formular. Geben Sie das betroffene System und die Client-Umgebung in der Beschreibung an und kontaktieren Sie ggf. die Domain Architects des zuständigen Bereichs. Bei Produktionsausfällen erfolgt der Kontakt über das IT Monitoring.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de"
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-azure-rbac] Azure RBAC:\n- Azure RBAC Assignment Building Block im Ziel-Tenant bestellen\n- Azure RBAC Administrator als Assignment Type wählen\n- die Object ID des Service Principals angeben\n- die Rolle enthält Bedingungen gegen Rechteausweitung\n- nur Benutzer mit der Projektrolle Project Admin dürfen das Building Block bestellen\n- die Bestellung erfolgt im Marketplace des Azure-Tenants\n- die Object ID der Enterprise Application beziehungsweise des Service Principals verwenden\n- nicht die Application ID der App Registration verwenden",
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen"
+        ],
+        "question": "Ist die Bereitstellung meiner Cloud-Umgebung gerade erfolgreich abgeschlossen?",
+        "reasoning": "Die Frage bezieht sich auf den Status der Bereitstellung einer Cloud-Umgebung. Der Kontext erwähnt \"Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\", was darauf hindeutet, dass eine solche Bereitstellung möglich ist, aber der Kontext gibt keinen Echtzeitstatus oder Erfolgsinformationen für eine spezifische Bereitstellung. Daher kann die Frage nicht beantwortet werden.",
+        "answerable": false,
+        "sources": [],
+        "answer": "Der Kontext enthält keine Informationen über den aktuellen Status oder die Erfolgsbestätigung Ihrer Cloud-Umgebungsbereitstellung.",
+        "answerable_score": 1.0,
+        "source_score": 0.0,
+        "point_score": 1.0,
+        "correct_count": 0.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de"
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-aws-cli] AWS CLI und Anmeldung:\n- Profil mit AWS IAM Identity Center konfigurieren\n- SSO-Start-URL und Region angeben\n- einen Profilnamen festlegen\n- aws sso login verwenden\n- das konfigurierte Profil auswählen\n- die Anmeldung im Browser abschließen\n- multiple profiles can be configured\n- each profile can represent a different account or role\n- the profile is selected with the profile option",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-entra-applications] Entra ID Applications:\n- Entra ID als Identity Provider verwenden\n- einen Service Principal für Azure-Zugriffe bereitstellen\n- begrenzten Zugriff auf Entra ID ermöglichen\n- multitenant should be enabled only when genuinely required\n- allowed tenants or service principals should be restricted\n- issuer and audience must be validated during sign-in\n- Application Permissions gelten für App-zu-App-Zugriffe ohne angemeldeten Benutzer\n- Delegated Permissions gelten im Namen eines angemeldeten Benutzers\n- bestimmte Berechtigungen benötigen Admin Consent"
+        ],
+        "question": "Wie richte ich ein AWS-CLI-Profil für die Anmeldung über IAM Identity Center ein?",
+        "reasoning": "The context explains how to configure an AWS CLI profile using AWS IAM Identity Center. It mentions specifying the SSO start URL and region, setting a profile name, using `aws sso login`, selecting the configured profile, and completing the login in a browser.  Multiple profiles can be configured, each representing a different account or role.",
+        "answerable": true,
+        "sources": [
+          "[kb-aws-cli]"
+        ],
+        "answer": "Konfigurieren Sie ein Profil mit AWS IAM Identity Center, indem Sie die SSO-Start-URL und Region angeben, einen Profilnamen festlegen, `aws sso login` verwenden, das konfigurierte Profil auswählen und die Anmeldung im Browser abschließen.",
+        "answerable_score": 1.0,
+        "source_score": 0.0,
+        "point_score": 1.0,
+        "correct_count": 0.0,
+        "incorrect_count": 1.0,
+        "missing_count": 1,
+        "language_score": 1.0,
+        "answer_language": "de"
+      }
+    ],
+    "signature": {
+      "instructions": "You are a helpful assistant that answers questions about \"One Platform\" based on the provided context. Your responses should be in the same language as the question, maintaining clarity and accuracy. If the provided context does not contain an answer to a question or it requires sensitive information not available in the context, indicate that the question is \"not answerable\" (Answerable: False). When answering, concisely extract the relevant information from the context and present it in a structured and easily understandable format.  Focus on providing the most direct and relevant answer from the context, without adding any external information or opinions. Always state the sources you used.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "Retrieved knowledge base documents with [doc_id]"
+        },
+        {
+          "prefix": "Question:",
+          "description": "User question in German or English"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answerable:",
+          "description": "True if answerable from context, False otherwise"
+        },
+        {
+          "prefix": "Sources:",
+          "description": "List of document IDs used, e.g. ['kb-ews-cli'], or [] if unanswerable"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "Concise answer covering the key points in the question's language"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.14",
+      "dspy": "3.4.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}
