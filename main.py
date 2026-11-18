@@ -2,7 +2,26 @@ import dspy
 import json
 from datetime import datetime
 from typing import Literal
+from lingua import Language, LanguageDetectorBuilder
 
+language_detector = (
+    LanguageDetectorBuilder
+    .from_languages(Language.GERMAN, Language.ENGLISH)
+    .with_preloaded_language_models()
+    .build()
+)
+
+def detect_language(text: str) -> str:
+    """Gibt 'de' oder 'en' zurück, basierend auf dem Text (lokal, ohne LLM)."""
+    if not text or not text.strip():
+        return "unknown"
+    lang = language_detector.detect_language_of(text)
+    if lang == Language.GERMAN:
+        return "de"
+    if lang == Language.ENGLISH:
+        return "en"
+    return "unknown"
+    
 with open("one-platform-chatbot-dataset.json", "r", encoding="utf-8") as f:
     raw_data = json.load(f)
 
@@ -59,7 +78,6 @@ class GradeAnswerPoints(dspy.Signature):
     predicted_answer: str = dspy.InputField()
     expected_points: list[str] = dspy.InputField()
     covered_points_count: int = dspy.OutputField(desc="Number of expected_points accurately present in predicted_answer")
-    detected_language: Literal["de", "en"] = dspy.OutputField(desc="Language of predicted_answer: 'de' for German, 'en' for English")
     
 judge = dspy.Predict(GradeAnswerPoints)
 
@@ -103,12 +121,22 @@ def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> floa
     )
     point_score = min(max(int(graded.covered_points_count), 0), len(points)) / len(points)
     pred.point_score = point_score
-    
-    language_score = 1.0 if graded.detected_language == example.language else 0.0
-    pred.answer_language = graded.detected_language
+
+    detected_language = detect_language(pred.answer)
+    language_score = 1.0 if detected_language == example.language else 0.0
+    pred.answer_language = detected_language
     pred.language_score = language_score
     
     return 0.25 * source_score + 0.65 * point_score + 0.1 * language_score
+
+prompt_lm = dspy.LM(
+    "ollama_chat/gemma3:12b",
+    api_base="http://localhost:11434",
+    api_key="ollama",
+    max_tokens=2000,
+    num_ctx=8192,
+    cache=False,
+)
 
 lm = dspy.LM(
     "ollama_chat/gemma3:12b",
@@ -127,8 +155,8 @@ evaluator = dspy.Evaluate(devset=devset, metric=rag_metric, num_threads=4, displ
 baseline_score = evaluator(chatbot)
 
 auto = ["light","medium", "heavy"]
-auto_index = 2
-optimizer = dspy.MIPROv2(metric=rag_metric, auto=auto[auto_index])
+auto_index = 0
+optimizer = dspy.MIPROv2(metric=rag_metric, auto=auto[auto_index], prompt_model=prompt_lm, task_model=lm)
 opitmized_chatbot = optimizer.compile(chatbot, trainset=trainset, valset=devset)
 
 test_string = f"output/evaluator/test/{dtstring}.json"
