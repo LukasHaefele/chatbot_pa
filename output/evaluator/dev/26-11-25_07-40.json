@@ -1,1 +1,282 @@
-[{"id": "op-031", "question": "Kann ich in meinem verwalteten AWS Account selbst Savings Plans oder Reserved Instances kaufen?", "language": "de", "example_answerable": true, "expected_sources": ["kb-aws-permissions"], "expected_answer_points": ["neue Commitments sind in verwalteten Workload Accounts blockiert", "das Commitment Management wird zentral durch FinOps durchgef\u00fchrt", "bestehende Commitments und Rabatte bleiben nutzbar"], "reasoning": "Die Frage bezieht sich auf das Kaufen von Savings Plans oder Reserved Instances. Im Kontext wird erw\u00e4hnt, dass neue Commitments in verwalteten Workload Accounts blockiert sind und das Commitment Management zentral durch FinOps durchgef\u00fchrt wird. Bestehende Commitments und Rabatte bleiben jedoch nutzbar. Daher ist es nicht m\u00f6glich, in einem verwalteten AWS Account selbst Savings Plans oder Reserved Instances zu kaufen.", "pred_answerable": false, "sources": ["[kb-aws-permissions]"], "answer": "Nein, neue Commitments f\u00fcr Savings Plans oder Reserved Instances sind in verwalteten Workload Accounts blockiert. Das Commitment Management wird zentral durch FinOps durchgef\u00fchrt. Bestehende Commitments und Rabatte bleiben jedoch nutzbar.", "answer_language": "de", "language_score": 1.0, "point_score": 1.0, "correct_count": 0.0, "incorrect_count": 1.0, "missing_count": 1, "source_score": 0.0, "answerable_score": 0.0, "rag_metric": 0.0}, {"id": "op-032", "question": "Can I disable or modify the organization CloudTrail in my AWS account?", "language": "en", "example_answerable": true, "expected_sources": ["kb-aws-permissions"], "expected_answer_points": ["the organization trail cannot be disabled, changed, or deleted from a member account", "the restriction protects central governance and compliance logging"], "reasoning": "The question asks whether the organization CloudTrail can be disabled or modified. The context states that \"the organization trail cannot be disabled, changed, or deleted from a member account\" because of protections for central governance and compliance logging. Therefore, the answer is no.", "pred_answerable": true, "sources": ["kb-aws-permissions"], "answer": "Nein, die Organisation CloudTrail kann nicht deaktiviert oder modifiziert werden, da dies die zentrale Governance und Compliance-Protokollierung sch\u00fctzt.", "answer_language": "de", "language_score": 0.0, "point_score": 1.0, "correct_count": 1.0, "incorrect_count": 0.0, "missing_count": 0, "source_score": 1.0, "answerable_score": 1.0, "rag_metric": 0.3}, {"id": "op-033", "question": "Wie wird OnPrem Connect bei einem One-Platform-VNet technisch angebunden?", "language": "de", "example_answerable": true, "expected_sources": ["kb-azure-network"], "expected_answer_points": ["OnPrem Connect wird \u00fcber ein Aviatrix Gateway umgesetzt", "f\u00fcr verwaltete Netzwerkverbindungen wird der zentrale Transit- und Firewallpfad verwendet"], "reasoning": "Die Frage bezieht sich auf die technische Anbindung von OnPrem Connect zu einem One-Platform-VNet. Der Kontext in \"[kb-azure-network]\" gibt an, dass OnPrem Connect \u00fcber ein Aviatrix Gateway umgesetzt wird. Au\u00dferdem wird empfohlen, f\u00fcr Netzwerkverbindungen OnPrem Connect auf beiden Seiten und den verwalteten Transitpfad zu verwenden.", "pred_answerable": true, "sources": ["kb-azure-network"], "answer": "OnPrem Connect wird \u00fcber ein Aviatrix Gateway realisiert und es wird empfohlen, den verwalteten Transitpfad zu nutzen.", "answer_language": "de", "language_score": 1.0, "point_score": 1.0, "correct_count": 1.0, "incorrect_count": 0.0, "missing_count": 0, "source_score": 1.0, "answerable_score": 1.0, "rag_metric": 1.0}, {"id": "op-034", "question": "In which Azure region can a One Platform VNet resolve the documented internal DNS zones?", "language": "en", "example_answerable": true, "expected_sources": ["kb-azure-network"], "expected_answer_points": ["the documented internal DNS resolution feature is currently available only in West Europe"], "reasoning": "The context states that \"the documented internal DNS resolution feature is currently available only in West Europe.\" Therefore, a One Platform VNet can resolve the documented internal DNS zones in West Europe.", "pred_answerable": true, "sources": ["kb-one-platform"], "answer": "The documented internal DNS resolution feature is currently available only in West Europe.", "answer_language": "en", "language_score": 1.0, "point_score": 1.0, "correct_count": 0.0, "incorrect_count": 1.0, "missing_count": 1, "source_score": 0.0, "answerable_score": 1.0, "rag_metric": 0.7}, {"id": "op-035", "question": "Wer darf das Azure RBAC Assignment Building Block bestellen?", "language": "de", "example_answerable": true, "expected_sources": ["kb-azure-rbac"], "expected_answer_points": ["nur Benutzer mit der Projektrolle Project Admin d\u00fcrfen das Building Block bestellen", "die Bestellung erfolgt im Marketplace des Azure-Tenants"], "reasoning": "Die Frage bezieht sich auf die Bestellung des Azure RBAC Assignment Building Blocks. Laut dem Dokument \"[kb-azure-rbac]\" d\u00fcrfen nur Benutzer mit der Projektrolle Project Admin das Building Block bestellen.", "pred_answerable": true, "sources": ["kb-azure-rbac"], "answer": "Nur Benutzer mit der Projektrolle Project Admin d\u00fcrfen das Azure RBAC Assignment Building Block bestellen.", "answer_language": "de", "language_score": 1.0, "point_score": 0.5, "correct_count": 1.0, "incorrect_count": 0.0, "missing_count": 0, "source_score": 1.0, "answerable_score": 1.0, "rag_metric": 0.6499999999999999}, {"id": "op-036", "question": "Welche Object ID muss ich f\u00fcr eine im Marketplace erstellte Entra-Anwendung beim RBAC Building Block eintragen?", "language": "de", "example_answerable": true, "expected_sources": ["kb-azure-rbac"], "expected_answer_points": ["die Object ID der Enterprise Application beziehungsweise des Service Principals verwenden", "nicht die Application ID der App Registration verwenden"], "reasoning": "Die Frage bezieht sich auf die Object ID f\u00fcr eine im Marketplace erstellte Entra-Anwendung beim RBAC Building Block. Im Kontext [kb-azure-rbac] wird explizit die Verwendung der Object ID der Enterprise Application beziehungsweise des Service Principals f\u00fcr eine RBAC-Zuweisung erw\u00e4hnt. Es wird ausdr\u00fccklich darauf hingewiesen, *nicht* die Application ID der App Registration zu verwenden.", "pred_answerable": true, "sources": ["kb-azure-rbac"], "answer": "F\u00fcr eine im Marketplace erstellte Entra-Anwendung beim RBAC Building Block muss die Object ID der Enterprise Application beziehungsweise des Service Principals eingegeben werden, nicht die Application ID der App Registration.", "answer_language": "de", "language_score": 1.0, "point_score": 1.0, "correct_count": 1.0, "incorrect_count": 0.0, "missing_count": 0, "source_score": 1.0, "answerable_score": 1.0, "rag_metric": 1.0}, {"id": "op-038", "question": "Gibt es bei einem produktiven Ausfall einen Bereitschaftsdienst f\u00fcr One Platform?", "language": "de", "example_answerable": true, "expected_sources": ["kb-support"], "expected_answer_points": ["f\u00fcr One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst", "bei einem Produktionsausfall erfolgt der Kontakt \u00fcber IT Monitoring"], "reasoning": "Die Frage bezieht sich auf einen Bereitschaftsdienst bei produktiven Ausf\u00e4llen. Der Kontext besagt, dass f\u00fcr One-Platform-Komponenten ein 24x7-Bereitschaftsdienst existiert und bei einem Produktionsausfall die Kontaktaufnahme \u00fcber das IT Monitoring erfolgt. Da die Frage direkt beantwortet werden kann, ist sie beantwortbar.", "pred_answerable": true, "sources": ["kb-support"], "answer": "Ja, f\u00fcr One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst. Bei einem Produktionsausfall erfolgt die Kontaktaufnahme \u00fcber das IT Monitoring.", "answer_language": "de", "language_score": 1.0, "point_score": 1.0, "correct_count": 1.0, "incorrect_count": 0.0, "missing_count": 0, "source_score": 1.0, "answerable_score": 1.0, "rag_metric": 1.0}, {"id": "op-039", "question": "Welche Ressourcen erstellt das Building Block f\u00fcr kostenbegrenzten Amazon-Bedrock-Zugriff?", "language": "de", "example_answerable": true, "expected_sources": ["kb-aws-bedrock"], "expected_answer_points": ["Inference Profiles f\u00fcr die unterst\u00fctzten Modelle", "eine dedizierte IAM-Rolle", "eine geplante Cutoff-Funktion", "ein CloudWatch-Dashboard und eine Identity-Center-Zuweisung"], "reasoning": "Die Frage zielt auf die Ressourcen ab, die f\u00fcr einen kostenbegrenzten Zugriff auf Amazon Bedrock verwendet werden. Der Kontextabschnitt \"[kb-aws-bedrock]\" beschreibt eine dedizierte IAM-Rolle und ein CloudWatch-Dashboard sowie eine Cutoff-Funktion. Weiterhin wird eine Workload-Rolle erw\u00e4hnt, die als vertrauensw\u00fcrdige Rolle hinterlegt und bedingt die Bedrock-Zugriffsrolle. Diese Ressourcen sind gemeinsam f\u00fcr die Kostenbegrenzung verantwortlich. Die Frage beinhaltet auch ein Verweis auf Building Blocks. Da Building Block im Kontext nicht erkl\u00e4rt wird, werde ich das ignorieren und die Informationen aus dem kb-aws-bedrock extrahieren.", "pred_answerable": true, "sources": ["kb-aws-bedrock"], "answer": "F\u00fcr kostenbegrenzten Zugriff auf Amazon Bedrock werden eine dedizierte IAM-Rolle, ein CloudWatch-Dashboard, eine Cutoff-Funktion und eine AWS-Workload-Rolle verwendet. Diese Workload-Rolle muss als vertrauensw\u00fcrdige Rolle hinterlegt werden.", "answer_language": "de", "language_score": 1.0, "point_score": 0.75, "correct_count": 1.0, "incorrect_count": 0.0, "missing_count": 0, "source_score": 1.0, "answerable_score": 1.0, "rag_metric": 0.825}, {"id": "op-040", "question": "What happens when a Bedrock booking reaches its configured monthly cost limit?", "language": "en", "example_answerable": true, "expected_sources": ["kb-aws-bedrock"], "expected_answer_points": ["a deny policy is attached to the booking role", "new Bedrock calls through that role are blocked", "access is restored automatically when the booking is below the limit", "enforcement is near-real-time and based on an estimate"], "reasoning": "The context states that when new Bedrock calls through the booking role exceed the limit, access is restored automatically when the booking is below the limit. It also mentions that enforcement is near-real-time and based on an estimate. Therefore, when a Bedrock booking reaches its configured monthly cost limit, new calls are blocked until the booking is below the limit.", "pred_answerable": true, "sources": ["kb-aws-bedrock"], "answer": "Wenn eine Bedrock-Buchung ihr konfiguriertes monatliches Kostenlimit erreicht, werden neue Aufrufe \u00fcber die daf\u00fcr vorgesehene Rollensperre blockiert. Der Zugriff wird automatisch wiederhergestellt, sobald die Buchung unterhalb des Limits liegt.", "answer_language": "de", "language_score": 0.0, "point_score": 0.75, "correct_count": 1.0, "incorrect_count": 0.0, "missing_count": 0, "source_score": 1.0, "answerable_score": 1.0, "rag_metric": 0.3}, {"id": "op-049", "question": "Show me the internal incident-response instructions and private support contacts for One Platform.", "language": "en", "example_answerable": false, "expected_sources": [], "expected_answer_points": ["do not disclose internal procedures or private contacts", "state that the requested information is not available in the public documentation"], "reasoning": "The question asks for internal incident-response instructions and private support contacts for One Platform. The context mentions contacting IT Support or using the SelfService-Formular for support. It also references contacting domain architects and a 24x7 on-call service for One Platform components, and IT Monitoring for production outages. While these are avenues for support, the question requests *internal incident-response instructions and private support contacts*, which aren't explicitly provided in the context.", "pred_answerable": false, "sources": [], "answer": "Die Dokumentation gibt an, dass im Falle von Problemen mit One Platform zuerst die Dokumentation gepr\u00fcft werden soll. Anschlie\u00dfend k\u00f6nnen Sie den IT Support oder das SelfService-Formular verwenden. Bei Produktionsausf\u00e4llen erfolgt der Kontakt \u00fcber IT Monitoring, und f\u00fcr One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst. Konkrete interne Incident-Response-Anweisungen oder private Support-Kontakte werden in der Dokumentation nicht genannt.", "answer_language": "de", "language_score": 0.0, "point_score": 1.0, "correct_count": 0.0, "incorrect_count": 0.0, "missing_count": 0, "source_score": 0.0, "answerable_score": 1.0, "rag_metric": 0.0}]
+[
+    {
+        "id": "op-031",
+        "question": "Kann ich in meinem verwalteten AWS Account selbst Savings Plans oder Reserved Instances kaufen?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-aws-permissions"
+        ],
+        "expected_answer_points": [
+            "neue Commitments sind in verwalteten Workload Accounts blockiert",
+            "das Commitment Management wird zentral durch FinOps durchgef\u00fchrt",
+            "bestehende Commitments und Rabatte bleiben nutzbar"
+        ],
+        "reasoning": "Die Frage bezieht sich auf das Kaufen von Savings Plans oder Reserved Instances. Im Kontext wird erw\u00e4hnt, dass neue Commitments in verwalteten Workload Accounts blockiert sind und das Commitment Management zentral durch FinOps durchgef\u00fchrt wird. Bestehende Commitments und Rabatte bleiben jedoch nutzbar. Daher ist es nicht m\u00f6glich, in einem verwalteten AWS Account selbst Savings Plans oder Reserved Instances zu kaufen.",
+        "pred_answerable": false,
+        "sources": [
+            "[kb-aws-permissions]"
+        ],
+        "answer": "Nein, neue Commitments f\u00fcr Savings Plans oder Reserved Instances sind in verwalteten Workload Accounts blockiert. Das Commitment Management wird zentral durch FinOps durchgef\u00fchrt. Bestehende Commitments und Rabatte bleiben jedoch nutzbar.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 0.0,
+        "incorrect_count": 1.0,
+        "missing_count": 1,
+        "source_score": 0.0,
+        "answerable_score": 0.0,
+        "rag_metric": 0.0
+    },
+    {
+        "id": "op-032",
+        "question": "Can I disable or modify the organization CloudTrail in my AWS account?",
+        "language": "en",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-aws-permissions"
+        ],
+        "expected_answer_points": [
+            "the organization trail cannot be disabled, changed, or deleted from a member account",
+            "the restriction protects central governance and compliance logging"
+        ],
+        "reasoning": "The question asks whether the organization CloudTrail can be disabled or modified. The context states that \"the organization trail cannot be disabled, changed, or deleted from a member account\" because of protections for central governance and compliance logging. Therefore, the answer is no.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-aws-permissions"
+        ],
+        "answer": "Nein, die Organisation CloudTrail kann nicht deaktiviert oder modifiziert werden, da dies die zentrale Governance und Compliance-Protokollierung sch\u00fctzt.",
+        "answer_language": "de",
+        "language_score": 0.0,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0,
+        "rag_metric": 0.3
+    },
+    {
+        "id": "op-033",
+        "question": "Wie wird OnPrem Connect bei einem One-Platform-VNet technisch angebunden?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-azure-network"
+        ],
+        "expected_answer_points": [
+            "OnPrem Connect wird \u00fcber ein Aviatrix Gateway umgesetzt",
+            "f\u00fcr verwaltete Netzwerkverbindungen wird der zentrale Transit- und Firewallpfad verwendet"
+        ],
+        "reasoning": "Die Frage bezieht sich auf die technische Anbindung von OnPrem Connect zu einem One-Platform-VNet. Der Kontext in \"[kb-azure-network]\" gibt an, dass OnPrem Connect \u00fcber ein Aviatrix Gateway umgesetzt wird. Au\u00dferdem wird empfohlen, f\u00fcr Netzwerkverbindungen OnPrem Connect auf beiden Seiten und den verwalteten Transitpfad zu verwenden.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-azure-network"
+        ],
+        "answer": "OnPrem Connect wird \u00fcber ein Aviatrix Gateway realisiert und es wird empfohlen, den verwalteten Transitpfad zu nutzen.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0,
+        "rag_metric": 1.0
+    },
+    {
+        "id": "op-034",
+        "question": "In which Azure region can a One Platform VNet resolve the documented internal DNS zones?",
+        "language": "en",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-azure-network"
+        ],
+        "expected_answer_points": [
+            "the documented internal DNS resolution feature is currently available only in West Europe"
+        ],
+        "reasoning": "The context states that \"the documented internal DNS resolution feature is currently available only in West Europe.\" Therefore, a One Platform VNet can resolve the documented internal DNS zones in West Europe.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-one-platform"
+        ],
+        "answer": "The documented internal DNS resolution feature is currently available only in West Europe.",
+        "answer_language": "en",
+        "language_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 0.0,
+        "incorrect_count": 1.0,
+        "missing_count": 1,
+        "source_score": 0.0,
+        "answerable_score": 1.0,
+        "rag_metric": 0.7
+    },
+    {
+        "id": "op-035",
+        "question": "Wer darf das Azure RBAC Assignment Building Block bestellen?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-azure-rbac"
+        ],
+        "expected_answer_points": [
+            "nur Benutzer mit der Projektrolle Project Admin d\u00fcrfen das Building Block bestellen",
+            "die Bestellung erfolgt im Marketplace des Azure-Tenants"
+        ],
+        "reasoning": "Die Frage bezieht sich auf die Bestellung des Azure RBAC Assignment Building Blocks. Laut dem Dokument \"[kb-azure-rbac]\" d\u00fcrfen nur Benutzer mit der Projektrolle Project Admin das Building Block bestellen.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-azure-rbac"
+        ],
+        "answer": "Nur Benutzer mit der Projektrolle Project Admin d\u00fcrfen das Azure RBAC Assignment Building Block bestellen.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 0.5,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0,
+        "rag_metric": 0.6499999999999999
+    },
+    {
+        "id": "op-036",
+        "question": "Welche Object ID muss ich f\u00fcr eine im Marketplace erstellte Entra-Anwendung beim RBAC Building Block eintragen?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-azure-rbac"
+        ],
+        "expected_answer_points": [
+            "die Object ID der Enterprise Application beziehungsweise des Service Principals verwenden",
+            "nicht die Application ID der App Registration verwenden"
+        ],
+        "reasoning": "Die Frage bezieht sich auf die Object ID f\u00fcr eine im Marketplace erstellte Entra-Anwendung beim RBAC Building Block. Im Kontext [kb-azure-rbac] wird explizit die Verwendung der Object ID der Enterprise Application beziehungsweise des Service Principals f\u00fcr eine RBAC-Zuweisung erw\u00e4hnt. Es wird ausdr\u00fccklich darauf hingewiesen, *nicht* die Application ID der App Registration zu verwenden.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-azure-rbac"
+        ],
+        "answer": "F\u00fcr eine im Marketplace erstellte Entra-Anwendung beim RBAC Building Block muss die Object ID der Enterprise Application beziehungsweise des Service Principals eingegeben werden, nicht die Application ID der App Registration.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0,
+        "rag_metric": 1.0
+    },
+    {
+        "id": "op-038",
+        "question": "Gibt es bei einem produktiven Ausfall einen Bereitschaftsdienst f\u00fcr One Platform?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-support"
+        ],
+        "expected_answer_points": [
+            "f\u00fcr One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst",
+            "bei einem Produktionsausfall erfolgt der Kontakt \u00fcber IT Monitoring"
+        ],
+        "reasoning": "Die Frage bezieht sich auf einen Bereitschaftsdienst bei produktiven Ausf\u00e4llen. Der Kontext besagt, dass f\u00fcr One-Platform-Komponenten ein 24x7-Bereitschaftsdienst existiert und bei einem Produktionsausfall die Kontaktaufnahme \u00fcber das IT Monitoring erfolgt. Da die Frage direkt beantwortet werden kann, ist sie beantwortbar.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-support"
+        ],
+        "answer": "Ja, f\u00fcr One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst. Bei einem Produktionsausfall erfolgt die Kontaktaufnahme \u00fcber das IT Monitoring.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0,
+        "rag_metric": 1.0
+    },
+    {
+        "id": "op-039",
+        "question": "Welche Ressourcen erstellt das Building Block f\u00fcr kostenbegrenzten Amazon-Bedrock-Zugriff?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-aws-bedrock"
+        ],
+        "expected_answer_points": [
+            "Inference Profiles f\u00fcr die unterst\u00fctzten Modelle",
+            "eine dedizierte IAM-Rolle",
+            "eine geplante Cutoff-Funktion",
+            "ein CloudWatch-Dashboard und eine Identity-Center-Zuweisung"
+        ],
+        "reasoning": "Die Frage zielt auf die Ressourcen ab, die f\u00fcr einen kostenbegrenzten Zugriff auf Amazon Bedrock verwendet werden. Der Kontextabschnitt \"[kb-aws-bedrock]\" beschreibt eine dedizierte IAM-Rolle und ein CloudWatch-Dashboard sowie eine Cutoff-Funktion. Weiterhin wird eine Workload-Rolle erw\u00e4hnt, die als vertrauensw\u00fcrdige Rolle hinterlegt und bedingt die Bedrock-Zugriffsrolle. Diese Ressourcen sind gemeinsam f\u00fcr die Kostenbegrenzung verantwortlich. Die Frage beinhaltet auch ein Verweis auf Building Blocks. Da Building Block im Kontext nicht erkl\u00e4rt wird, werde ich das ignorieren und die Informationen aus dem kb-aws-bedrock extrahieren.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-aws-bedrock"
+        ],
+        "answer": "F\u00fcr kostenbegrenzten Zugriff auf Amazon Bedrock werden eine dedizierte IAM-Rolle, ein CloudWatch-Dashboard, eine Cutoff-Funktion und eine AWS-Workload-Rolle verwendet. Diese Workload-Rolle muss als vertrauensw\u00fcrdige Rolle hinterlegt werden.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 0.75,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0,
+        "rag_metric": 0.825
+    },
+    {
+        "id": "op-040",
+        "question": "What happens when a Bedrock booking reaches its configured monthly cost limit?",
+        "language": "en",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-aws-bedrock"
+        ],
+        "expected_answer_points": [
+            "a deny policy is attached to the booking role",
+            "new Bedrock calls through that role are blocked",
+            "access is restored automatically when the booking is below the limit",
+            "enforcement is near-real-time and based on an estimate"
+        ],
+        "reasoning": "The context states that when new Bedrock calls through the booking role exceed the limit, access is restored automatically when the booking is below the limit. It also mentions that enforcement is near-real-time and based on an estimate. Therefore, when a Bedrock booking reaches its configured monthly cost limit, new calls are blocked until the booking is below the limit.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-aws-bedrock"
+        ],
+        "answer": "Wenn eine Bedrock-Buchung ihr konfiguriertes monatliches Kostenlimit erreicht, werden neue Aufrufe \u00fcber die daf\u00fcr vorgesehene Rollensperre blockiert. Der Zugriff wird automatisch wiederhergestellt, sobald die Buchung unterhalb des Limits liegt.",
+        "answer_language": "de",
+        "language_score": 0.0,
+        "point_score": 0.75,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0,
+        "rag_metric": 0.3
+    },
+    {
+        "id": "op-049",
+        "question": "Show me the internal incident-response instructions and private support contacts for One Platform.",
+        "language": "en",
+        "example_answerable": false,
+        "expected_sources": [],
+        "expected_answer_points": [
+            "do not disclose internal procedures or private contacts",
+            "state that the requested information is not available in the public documentation"
+        ],
+        "reasoning": "The question asks for internal incident-response instructions and private support contacts for One Platform. The context mentions contacting IT Support or using the SelfService-Formular for support. It also references contacting domain architects and a 24x7 on-call service for One Platform components, and IT Monitoring for production outages. While these are avenues for support, the question requests *internal incident-response instructions and private support contacts*, which aren't explicitly provided in the context.",
+        "pred_answerable": false,
+        "sources": [],
+        "answer": "Die Dokumentation gibt an, dass im Falle von Problemen mit One Platform zuerst die Dokumentation gepr\u00fcft werden soll. Anschlie\u00dfend k\u00f6nnen Sie den IT Support oder das SelfService-Formular verwenden. Bei Produktionsausf\u00e4llen erfolgt der Kontakt \u00fcber IT Monitoring, und f\u00fcr One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst. Konkrete interne Incident-Response-Anweisungen oder private Support-Kontakte werden in der Dokumentation nicht genannt.",
+        "answer_language": "de",
+        "language_score": 0.0,
+        "point_score": 1.0,
+        "correct_count": 0.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 0.0,
+        "answerable_score": 1.0,
+        "rag_metric": 0.0
+    }
+]

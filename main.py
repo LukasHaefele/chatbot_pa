@@ -114,7 +114,7 @@ def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> floa
     pred.missing_count = missing_count
     pred.source_score = source_score
     pred.answerable_score = answerable_score
-    return 0.3 * source_score + 0.7 * point_score * language_score * answerable_score
+    return (0.3 * source_score + 0.7 * point_score) * language_score * answerable_score
 
 lm = dspy.LM(
     "ollama_chat/gemma3:12b",
