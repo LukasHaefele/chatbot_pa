@@ -64,18 +64,24 @@ class GradeAnswerPoints(dspy.Signature):
 judge = dspy.Predict(GradeAnswerPoints)
 
 def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> float:
+    """Custom metric function. Calculates a score for the prediction based on the language used and the answerable value, both weighed as absolutes, as well as the referenced sources and the covered points. 
+
+    Args:
+        example (dspy.Example): The example variable serving as ground truth
+        pred (dspy.Prediction): The llms answer to the question.
+        trace (_type_, optional): The final calculated Score.
+
+    Returns:
+        float: _description_
+    """
     
-    pred.answerable_score = 1.0
-    pred.source_score = 0.0
-    pred.point_score = 0.0
-    pred.correct_count = 0.0
-    pred.incorrect_count = 0.0
-    pred.missing_count = 0.0
-    pred.language_score = 0.0
-    if bool(pred.answerable) != bool(example.answerable):
-        pred.answerable_score = 0.0
-        # return 0.0
-    
+    answerable_score = 1.0  if bool(pred.answerable) == bool(example.answerable) else 0.0
+    source_score = 0.0
+    point_score = 0.0
+    correct_count = 0.0
+    incorrect_count = 0.0
+    missing_count = 0.0
+    language_score = 0.0
     
     expected_src = set(example.expected_sources)
     pred_src = set(pred.sources or [])
@@ -88,12 +94,8 @@ def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> floa
         else:
             incorrect_count += 1.0
     missing_count = len(expected_src)
-    
     source_score = correct_count / max((missing_count + incorrect_count + correct_count), 1)
-    pred.correct_count = correct_count
-    pred.incorrect_count = incorrect_count
-    pred.missing_count = missing_count
-    pred.source_score = source_score
+    
     
     points = example.expected_answer_points
     graded = judge(
@@ -102,16 +104,20 @@ def rag_metric(example: dspy.Example, pred: dspy.Prediction, trace=None) -> floa
         expected_points = points
     )
     point_score = min(max(int(graded.covered_points_count), 0), len(points)) / len(points)
-    pred.point_score = point_score
-    
     language_score = 1.0 if graded.detected_language == example.language else 0.0
+    
     pred.answer_language = graded.detected_language
     pred.language_score = language_score
-    
-    return 0.25 * source_score + 0.65 * point_score + 0.1 * language_score
+    pred.point_score = point_score
+    pred.correct_count = correct_count
+    pred.incorrect_count = incorrect_count
+    pred.missing_count = missing_count
+    pred.source_score = source_score
+    pred.answerable_score = answerable_score
+    return 0.3 * source_score + 0.7 * point_score * language_score * answerable_score
 
 lm = dspy.LM(
-    "ollama_chat/llama3.2",
+    "ollama_chat/gemma3:12b",
     api_base="http://localhost:11434/v1",
     api_key="ollama",
     cache=False
@@ -127,7 +133,7 @@ evaluator = dspy.Evaluate(devset=devset, metric=rag_metric, num_threads=4, displ
 baseline_score = evaluator(chatbot)
 
 auto = ["light","medium", "heavy"]
-auto_index = 2
+auto_index = 1
 optimizer = dspy.MIPROv2(metric=rag_metric, auto=auto[auto_index])
 opitmized_chatbot = optimizer.compile(chatbot, trainset=trainset, valset=devset)
 

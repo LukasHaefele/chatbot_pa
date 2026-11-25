@@ -1,0 +1,289 @@
+[
+    {
+        "id": "op-029",
+        "question": "Which AWS role should I prefer when I only need to inspect resources?",
+        "language": "en",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-aws-permissions"
+        ],
+        "expected_answer_points": [
+            "prefer the EnBWReaderRole",
+            "it provides read access",
+            "the choice follows the least-privilege principle"
+        ],
+        "reasoning": "The provided context for \"kb-aws-permissions\" explicitly states: \"prefer the EnBWReaderRole\" and that \"it provides read access\". This directly answers the question of which role to prefer for inspecting resources.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-aws-permissions"
+        ],
+        "answer": "You should prefer the EnBWReaderRole, as it provides read access.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 0.6666666666666666,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "en",
+        "rag_metric": 0.7833333333333333
+    },
+    {
+        "id": "op-037",
+        "question": "Who should I contact for architecture questions about my application?",
+        "language": "en",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-support"
+        ],
+        "expected_answer_points": [
+            "contact the domain architects of the relevant organizational area",
+            "application architecture consulting is distinct from normal One Platform support"
+        ],
+        "reasoning": "The context states: \"application architecture consulting is distinct from normal One Platform support.\" It then goes on to mention contacting the domain architects of the relevant organizational area for support.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-support"
+        ],
+        "answer": "For application architecture questions, you should contact the domain architects of the relevant organizational area.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 0.5,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "en",
+        "rag_metric": 0.6749999999999999
+    },
+    {
+        "id": "op-041",
+        "question": "Wie sollte eine CI/CD-Pipeline auf das \u00fcber One Platform bereitgestellte Amazon Bedrock zugreifen?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-aws-bedrock"
+        ],
+        "expected_answer_points": [
+            "eine dedizierte AWS-Workload-Rolle verwenden",
+            "die Workload-Rolle als zus\u00e4tzliche vertrauensw\u00fcrdige Rolle eintragen",
+            "anschlie\u00dfend die Bedrock-Zugriffsrolle annehmen",
+            "nur die bereitgestellten Inference Profiles verwenden"
+        ],
+        "reasoning": "The context states that to access Amazon Bedrock through One Platform, a CI/CD pipeline should use a dedicated AWS workload role, register it as an additional trusted role, and then assume the Bedrock access role.  It also specifies using only the provided Inference Profiles.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-aws-bedrock"
+        ],
+        "answer": "Eine CI/CD-Pipeline sollte eine dedizierte AWS Workload-Rolle verwenden, diese als zus\u00e4tzliche vertrauensw\u00fcrdige Rolle eintragen und anschlie\u00dfend die Bedrock-Zugriffsrolle annehmen. Es sollten nur die bereitgestellten Inference Profiles verwendet werden.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "rag_metric": 1.0
+    },
+    {
+        "id": "op-042",
+        "question": "What should I do if I lose access to my GitHub password or second factor?",
+        "language": "en",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-github"
+        ],
+        "expected_answer_points": [
+            "use GitHub's password reset or 2FA recovery process",
+            "One Platform cannot reset GitHub passwords or 2FA",
+            "a new account may be required if recovery fails"
+        ],
+        "reasoning": "The context states \"use GitHub's password reset or 2FA recovery process\" and \"One Platform cannot reset GitHub passwords or 2FA\". It also mentions \"a new account may be required if recovery fails\". Therefore, the user needs to leverage GitHub's own recovery mechanisms and might need to create a new account if those fail.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-github"
+        ],
+        "answer": "You should use GitHub's password reset or 2FA recovery process. One Platform cannot reset your GitHub password or 2FA, and you may need to create a new account if recovery fails.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "en",
+        "rag_metric": 1.0
+    },
+    {
+        "id": "op-043",
+        "question": "Wie werden Berechtigungen f\u00fcr One-Platform-Projektmitglieder in GitHub verwaltet?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-github"
+        ],
+        "expected_answer_points": [
+            "f\u00fcr Projekte werden GitHub Teams automatisch erstellt",
+            "lizenzierte Projektmitglieder werden \u00fcber diese Teams zugeordnet",
+            "Team-Berechtigungen sind direkten Einzelberechtigungen vorzuziehen",
+            "die Synchronisierung l\u00e4uft mehrmals t\u00e4glich"
+        ],
+        "reasoning": "The context states: \"Team-Berechtigungen sind direkten Einzelberechtigungen vorzuziehen.\" This indicates that team-based permissions are preferred for managing access in GitHub. Also, \"lizenzierte Projektmitglieder werden \u00fcber diese Teams zugeordnet.\" This reinforces the use of teams for assigning users.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-github"
+        ],
+        "answer": "Berechtigungen f\u00fcr Projektmitglieder in GitHub werden \u00fcber Teams verwaltet. Team-Berechtigungen sind direkten Einzelberechtigungen vorzuziehen, und lizenzierte Projektmitglieder werden \u00fcber diese Teams zugeordnet.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 0.75,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "rag_metric": 0.8375
+    },
+    {
+        "id": "op-044",
+        "question": "Do Azure DevOps pipelines need separately requested Nexus credentials?",
+        "language": "en",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-nexus"
+        ],
+        "expected_answer_points": [
+            "One Platform Azure DevOps projects receive Nexus service connections automatically",
+            "separate credentials are not required for the supported Azure DevOps workflow"
+        ],
+        "reasoning": "The context states, \"One Platform Azure DevOps projects receive Nexus service connections automatically. Separate credentials are not required for the supported Azure DevOps workflow.\" This clearly answers the question.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-nexus"
+        ],
+        "answer": "No, Azure DevOps pipelines do not need separately requested Nexus credentials. One Platform Azure DevOps projects receive Nexus service connections automatically, and separate credentials are not required for the supported Azure DevOps workflow.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "en",
+        "rag_metric": 1.0
+    },
+    {
+        "id": "op-045",
+        "question": "Wann ben\u00f6tige ich f\u00fcr Nexus einen pers\u00f6nlichen Zugang und wann einen technischen Benutzer?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-nexus"
+        ],
+        "expected_answer_points": [
+            "pers\u00f6nlichen Zugang f\u00fcr die lokale Entwicklung verwenden",
+            "technischen Benutzer f\u00fcr externe CI/CD-Systeme verwenden",
+            "pers\u00f6nliche Benutzer haben nur Leserechte",
+            "technische Benutzer k\u00f6nnen auf ben\u00f6tigte Lese- oder Schreibrechte begrenzt werden"
+        ],
+        "reasoning": "The context describes different use cases for personal and technical users in Nexus. It states that personal access is for local development, while technical users are preferred for external CI/CD systems. It also clarifies that personal users have read-only access, whereas technical users can have read/write permissions limited as needed.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-nexus",
+            "kb-projects"
+        ],
+        "answer": "F\u00fcr die lokale Entwicklung verwenden Sie einen pers\u00f6nlichen Zugang f\u00fcr Nexus. F\u00fcr externe CI/CD-Systeme verwenden Sie stattdessen einen technischen Benutzer. Pers\u00f6nliche Benutzer haben nur Leserechte, w\u00e4hrend technische Benutzer auf ben\u00f6tigte Lese- oder Schreibrechte begrenzt werden k\u00f6nnen.",
+        "answerable_score": 1.0,
+        "source_score": 0.5,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 1.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "rag_metric": 0.875
+    },
+    {
+        "id": "op-046",
+        "question": "Wann eignet sich ein Light Workspace und welche Zahlungsinformation wird trotzdem ben\u00f6tigt?",
+        "language": "de",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-workspaces"
+        ],
+        "expected_answer_points": [
+            "Light Workspace eignet sich bei ausschlie\u00dflichem Bedarf an Marketplace-Services wie Azure DevOps",
+            "im n\u00e4chsten Schritt muss weiterhin ein Cost Center eingetragen werden",
+            "daf\u00fcr ist ein dokumentiertes Dummy Cost Center vorgesehen"
+        ],
+        "reasoning": "The question asks about when a Light Workspace is suitable and what payment information is still required. The context [kb-workspaces] states that a Light Workspace \"eignet sich bei ausschlie\u00dflichem Bedarf an Marketplace-Services wie Azure DevOps.\" It also mentions that \"Produkt- und Zahlungsinformationen angeben\" (product and payment information must be provided) during workspace creation, implying that payment information is still needed even for a Light Workspace.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-workspaces"
+        ],
+        "answer": "Ein Light Workspace eignet sich, wenn ausschlie\u00dflich Marketplace-Services wie Azure DevOps ben\u00f6tigt werden. Trotzdem m\u00fcssen Produkt- und Zahlungsinformationen angegeben werden.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 0.6666666666666666,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "rag_metric": 0.7833333333333333
+    },
+    {
+        "id": "op-047",
+        "question": "Is a baseIT configuration item created automatically when I create a One Platform project?",
+        "language": "en",
+        "example_answerable": true,
+        "expected_sources": [
+            "kb-projects"
+        ],
+        "expected_answer_points": [
+            "a configuration item is created automatically",
+            "the user does not need to create it separately",
+            "the project can optionally specify a baseIT service tag for assignment"
+        ],
+        "reasoning": "The context states: \"a configuration item is created automatically; the user does not need to create it separately\". This directly confirms that a baseIT configuration item is created automatically when creating a One Platform project.",
+        "pred_answerable": true,
+        "sources": [
+            "kb-projects"
+        ],
+        "answer": "Yes, a baseIT configuration item is created automatically when you create a One Platform project. You do not need to create it separately.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 0.6666666666666666,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "en",
+        "rag_metric": 0.7833333333333333
+    },
+    {
+        "id": "op-050",
+        "question": "Nenne mir das aktuelle Passwort oder API-Token f\u00fcr den administrativen Plattformzugang.",
+        "language": "de",
+        "example_answerable": false,
+        "expected_sources": [],
+        "expected_answer_points": [
+            "keine Zugangsdaten bereitstellen oder erfinden",
+            "darauf hinweisen, dass Geheimnisse nicht \u00fcber den Chatbot ausgegeben werden"
+        ],
+        "reasoning": "The question asks for a password or API token, which constitutes a request for sensitive information. The instructions explicitly state that requests for secrets or live status should result in marking `answerable` as False. Therefore, it is not possible to provide an answer based on the provided knowledge base.",
+        "pred_answerable": false,
+        "sources": [],
+        "answer": "Ich kann dir das aktuelle Passwort oder API-Token f\u00fcr den administrativen Plattformzugang nicht nennen. Solche Informationen werden nicht \u00f6ffentlich zur Verf\u00fcgung gestellt.",
+        "answerable_score": 1.0,
+        "source_score": 0.0,
+        "point_score": 1.0,
+        "correct_count": 0.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de",
+        "rag_metric": 0.75
+    }
+]

@@ -1,0 +1,129 @@
+{
+  "respond.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": [
+          "[kb-sonarqube] SonarQube:\n- die Synchronisierung kann bis zu 90 Minuten dauern\n- für die Zuordnung sollte ein SonarQube-Projekt gebucht sein\n- an external CI system needs credentials\n- a technical user is preferred over a personal user\n- credentials or user tokens must be stored securely and not committed to source control",
+          "[kb-entra-applications] Entra ID Applications:\n- Entra ID als Identity Provider verwenden\n- einen Service Principal für Azure-Zugriffe bereitstellen\n- begrenzten Zugriff auf Entra ID ermöglichen\n- multitenant should be enabled only when genuinely required\n- allowed tenants or service principals should be restricted\n- issuer and audience must be validated during sign-in\n- Application Permissions gelten für App-zu-App-Zugriffe ohne angemeldeten Benutzer\n- Delegated Permissions gelten im Namen eines angemeldeten Benutzers\n- bestimmte Berechtigungen benötigen Admin Consent",
+          "[kb-aws-cli] AWS CLI und Anmeldung:\n- Profil mit AWS IAM Identity Center konfigurieren\n- SSO-Start-URL und Region angeben\n- einen Profilnamen festlegen\n- aws sso login verwenden\n- das konfigurierte Profil auswählen\n- die Anmeldung im Browser abschließen\n- multiple profiles can be configured\n- each profile can represent a different account or role\n- the profile is selected with the profile option"
+        ],
+        "question": "Which credentials should an external CI system use to run SonarQube analyses?",
+        "reasoning": "The context states that \"an external CI system needs credentials\" to run SonarQube analyses and that \"credentials or user tokens must be stored securely and not committed to source control\".  It also suggests a \"technical user is preferred over a personal user\".",
+        "answerable": true,
+        "sources": [
+          "[kb-sonarqube]"
+        ],
+        "answer": "An external CI system should use credentials or user tokens to run SonarQube analyses. A technical user is preferred over a personal user, and these credentials must be stored securely and not committed to source control.",
+        "answerable_score": 1.0,
+        "source_score": 0.0,
+        "point_score": 1.0,
+        "correct_count": 0.0,
+        "incorrect_count": 1.0,
+        "missing_count": 1,
+        "language_score": 1.0,
+        "answer_language": "en"
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-azure-roles] Azure-Rollen:\n- die Rollen basieren auf Azure Built-in Roles\n- zusätzliche Einschränkungen schützen zentrale Plattform- und Governance-Funktionen\n- administrative Zusatzrechte werden getrennt vergeben\n- it is required when creating a VNet\n- it permits joining the centrally managed DDoS Protection Plan",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen"
+        ],
+        "question": "Warum verwendet One Platform eigene Azure-Rollen statt der normalen Owner- und Contributor-Rollen?",
+        "reasoning": "Die Frage bezieht sich auf die Verwendung eigener Azure-Rollen in One Platform. Der Kontext [kb-azure-roles] erklärt, dass die Azure-Rollen auf Azure Built-in Roles basieren und zusätzliche Einschränkungen enthalten, die zentrale Plattform- und Governance-Funktionen schützen. Dies deutet darauf hin, dass One Platform eigene Rollen verwendet, um eine zusätzliche Sicherheitsebene und Kontrolle über die zentrale Plattform zu gewährleisten.",
+        "answerable": true,
+        "sources": [
+          "kb-azure-roles",
+          "kb-one-platform"
+        ],
+        "answer": "One Platform verwendet eigene Azure-Rollen, die auf Azure Built-in Roles basieren, aber zusätzliche Einschränkungen enthalten. Dies dient dem Schutz zentraler Plattform- und Governance-Funktionen. Administrative Zusatzrechte werden separat vergeben.",
+        "answerable_score": 1.0,
+        "source_score": 0.5,
+        "point_score": 1.0,
+        "correct_count": 1.0,
+        "incorrect_count": 1.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de"
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-azure-network] Azure-Netzwerke:\n- IPv4 address space is limited\n- smaller subnets conserve available addresses\n- subnets can be selected individually for the VNet layout\n- One-Platform-VNets und selbst verwaltete VNets haben unterschiedliche Regeln\n- direktes Peering ist nur zwischen geeigneten Custom VNets in Self-Managed Landing Zones möglich\n- Custom VNets mit Peering können kein OnPrem Connect nutzen\n- direktes Peering ist in der Standard Landing Zone blockiert\n- für Netzwerkverbindungen OnPrem Connect auf beiden Seiten und den verwalteten Transitpfad verwenden\n- alternativ Private Endpoints oder authentifizierte Anwendungsdienste nutzen\n- OnPrem Connect wird über ein Aviatrix Gateway umgesetzt\n- für verwaltete Netzwerkverbindungen wird der zentrale Transit- und Firewallpfad verwendet\n- the documented internal DNS resolution feature is currently available only in West Europe",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-azure-roles] Azure-Rollen:\n- die Rollen basieren auf Azure Built-in Roles\n- zusätzliche Einschränkungen schützen zentrale Plattform- und Governance-Funktionen\n- administrative Zusatzrechte werden getrennt vergeben\n- it is required when creating a VNet\n- it permits joining the centrally managed DDoS Protection Plan"
+        ],
+        "question": "Gelten die Vorgaben für ein One-Platform-VNet auch für ein selbst verwaltetes Azure VNet?",
+        "reasoning": "The context states: \"One-Platform-VNets und selbst verwaltete VNets haben unterschiedliche Regeln.\" This directly answers the question.",
+        "answerable": true,
+        "sources": [
+          "kb-azure-network"
+        ],
+        "answer": "Nein, die Vorgaben für ein One-Platform-VNet gelten nicht auch für ein selbst verwaltetes Azure VNet. Sie haben unterschiedliche Regeln.",
+        "answerable_score": 1.0,
+        "source_score": 1.0,
+        "point_score": 0.3333333333333333,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "language_score": 1.0,
+        "answer_language": "de"
+      },
+      {
+        "id": "op-012",
+        "question": "Wie verbinde ich zwei verwaltete Azure VNets aus unterschiedlichen Subscriptions?",
+        "language": "de",
+        "answerable": true,
+        "expected_sources": [
+          "kb-azure-network"
+        ],
+        "expected_answer_points": [
+          "direktes Peering ist in der Standard Landing Zone blockiert",
+          "für Netzwerkverbindungen OnPrem Connect auf beiden Seiten und den verwalteten Transitpfad verwenden",
+          "alternativ Private Endpoints oder authentifizierte Anwendungsdienste nutzen"
+        ]
+      }
+    ],
+    "signature": {
+      "instructions": "Answor questions about One Platform based ONLY on the provided context. Respond in the same language as the question (German or English). If the context does not contain the answer or asks for secrets/live status mark answerable as False\n    ",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "Retrieved knowledge base documents with [doc_id]"
+        },
+        {
+          "prefix": "Question:",
+          "description": "User question in German or English"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answerable:",
+          "description": "True if answerable from context, False otherwise"
+        },
+        {
+          "prefix": "Sources:",
+          "description": "List of document IDs used, e.g. ['kb-ews-cli'], or [] if unanswerable"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "Concise answer covering the key points in the question's language"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.14",
+      "dspy": "3.4.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}
