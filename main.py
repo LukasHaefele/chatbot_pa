@@ -133,7 +133,7 @@ evaluator = dspy.Evaluate(devset=devset, metric=rag_metric, num_threads=4, displ
 baseline_score = evaluator(chatbot)
 
 auto = ["light","medium", "heavy"]
-auto_index = 1
+auto_index = 2
 optimizer = dspy.MIPROv2(metric=rag_metric, auto=auto[auto_index])
 opitmized_chatbot = optimizer.compile(chatbot, trainset=trainset, valset=devset)
 

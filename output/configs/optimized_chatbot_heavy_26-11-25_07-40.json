@@ -1,0 +1,128 @@
+{
+  "respond.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": [
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen",
+          "[kb-projects] Projekte verwalten:\n- select the workspace\n- use Create Project in the Projects tab\n- provide project data and tags\n- select tenants, landing zones, and the marketplace\n- Kennzeichnung als Produktionsumgebung\n- Verarbeitung personenbezogener Daten\n- Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität\n- a configuration item is created automatically\n- the user does not need to create it separately\n- the project can optionally specify a baseIT service tag for assignment",
+          "[kb-support] One Platform Support:\n- zuerst die Dokumentation prüfen\n- IT Support oder das SelfService-Formular verwenden\n- betroffenes System und Client-Umgebung in der Beschreibung angeben\n- contact the domain architects of the relevant organizational area\n- application architecture consulting is distinct from normal One Platform support\n- für One-Platform-Komponenten gibt es einen 24x7-Bereitschaftsdienst\n- bei einem Produktionsausfall erfolgt der Kontakt über IT Monitoring"
+        ],
+        "question": "Welche Voraussetzungen gelten, bevor ich einen Workspace löschen kann?",
+        "reasoning": "Die Frage bezieht sich auf die Voraussetzungen für das Löschen eines Workspace. Der Kontext unter \"[kb-workspaces]\" gibt an, dass die Löschung die Rolle Workspace Owner erfordert. Es gibt außerdem verschiedene Einschränkungen vor der Löschung wie z.B. die Löschung aller Projekte, das Deaktivieren von Service Broker und die Bedingung, dass der Workspace kein Partner sein darf.",
+        "answerable": true,
+        "sources": [
+          "[kb-workspaces]"
+        ],
+        "answer": "Bevor ein Workspace gelöscht werden kann, muss die Rolle Workspace Owner vorhanden sein. Es müssen alle Projekte vollständig gelöscht, veröffentlichte Service Broker deaktiviert und der Workspace darf kein Partner sein.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 1.0,
+        "correct_count": 0.0,
+        "incorrect_count": 1.0,
+        "missing_count": 1,
+        "source_score": 0.0,
+        "answerable_score": 1.0
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-azure-network] Azure-Netzwerke:\n- IPv4 address space is limited\n- smaller subnets conserve available addresses\n- subnets can be selected individually for the VNet layout\n- One-Platform-VNets und selbst verwaltete VNets haben unterschiedliche Regeln\n- direktes Peering ist nur zwischen geeigneten Custom VNets in Self-Managed Landing Zones möglich\n- Custom VNets mit Peering können kein OnPrem Connect nutzen\n- direktes Peering ist in der Standard Landing Zone blockiert\n- für Netzwerkverbindungen OnPrem Connect auf beiden Seiten und den verwalteten Transitpfad verwenden\n- alternativ Private Endpoints oder authentifizierte Anwendungsdienste nutzen\n- OnPrem Connect wird über ein Aviatrix Gateway umgesetzt\n- für verwaltete Netzwerkverbindungen wird der zentrale Transit- und Firewallpfad verwendet\n- the documented internal DNS resolution feature is currently available only in West Europe",
+          "[kb-one-platform] One Platform Überblick:\n- compliant central logging\n- automatic baseIT configuration items\n- preconfigured cloud security tools\n- central identity and access management with SSO and MFA\n- Cloud-Umgebungen und Werkzeuge im Self-Service erstellen und löschen\n- AWS, Azure und GCP unterstützen\n- zusätzliche Produkte und eigene Angebote über den Marketplace bereitstellen",
+          "[kb-azure-roles] Azure-Rollen:\n- die Rollen basieren auf Azure Built-in Roles\n- zusätzliche Einschränkungen schützen zentrale Plattform- und Governance-Funktionen\n- administrative Zusatzrechte werden getrennt vergeben\n- it is required when creating a VNet\n- it permits joining the centrally managed DDoS Protection Plan"
+        ],
+        "question": "Gelten die Vorgaben für ein One-Platform-VNet auch für ein selbst verwaltetes Azure VNet?",
+        "reasoning": "The context states: \"One-Platform-VNets und selbst verwaltete VNets haben unterschiedliche Regeln.\" This directly answers the question.",
+        "answerable": true,
+        "sources": [
+          "kb-azure-network"
+        ],
+        "answer": "Nein, die Vorgaben gelten nicht für selbst verwaltete Azure VNets. One-Platform-VNets und selbst verwaltete VNets haben unterschiedliche Regeln.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 0.3333333333333333,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0
+      },
+      {
+        "augmented": true,
+        "context": [
+          "[kb-workspaces] Workspaces verwalten:\n- in der One Platform Console anmelden\n- Create Workspace auswählen\n- Produkt- und Zahlungsinformationen angeben\n- mindestens einen Workspace Owner zuweisen\n- mindestens ein Workspace Owner ist erforderlich\n- Teammitglieder können bereits bei der Erstellung zugewiesen werden\n- die Person muss im Entra ID der One Platform vorhanden sein\n- bei neuen Benutzern kann die Synchronisierung etwas dauern\n- alle Projekte müssen vollständig gelöscht sein\n- veröffentlichte Service Broker müssen deaktiviert sein\n- der Workspace darf kein Partner sein\n- die Löschung erfordert die Rolle Workspace Owner\n- Light Workspace eignet sich bei ausschließlichem Bedarf an Marketplace-Services wie Azure DevOps\n- im nächsten Schritt muss weiterhin ein Cost Center eingetragen werden\n- dafür ist ein dokumentiertes Dummy Cost Center vorgesehen",
+          "[kb-projects] Projekte verwalten:\n- select the workspace\n- use Create Project in the Projects tab\n- provide project data and tags\n- select tenants, landing zones, and the marketplace\n- Kennzeichnung als Produktionsumgebung\n- Verarbeitung personenbezogener Daten\n- Schutzbedarf für Verfügbarkeit, Vertraulichkeit und Integrität\n- a configuration item is created automatically\n- the user does not need to create it separately\n- the project can optionally specify a baseIT service tag for assignment",
+          "[kb-nexus] Nexus Repository Manager:\n- pip auf das Nexus-Python-Repository konfigurieren\n- in Azure DevOps die bereitgestellte Service Connection und PipAuthenticate verwenden\n- lokal die pip-Konfiguration und einen User Token verwenden\n- persönlichen Zugriff über den Marketplace buchen\n- Nexus unterstützt Single Sign-On\n- User Token und Passcode in den persönlichen Nexus-Einstellungen abrufen\n- request a Nexus technical user through the marketplace\n- use technical rather than personal credentials\n- select only the required read or write permissions\n- One Platform Azure DevOps projects receive Nexus service connections automatically\n- separate credentials are not required for the supported Azure DevOps workflow\n- persönlichen Zugang für die lokale Entwicklung verwenden\n- technischen Benutzer für externe CI/CD-Systeme verwenden\n- persönliche Benutzer haben nur Leserechte\n- technische Benutzer können auf benötigte Lese- oder Schreibrechte begrenzt werden"
+        ],
+        "question": "Muss beim Erstellen eines Workspaces ein Workspace Owner eingetragen werden?",
+        "reasoning": "The context states: \"mindestens einen Workspace Owner zuweisen\" and \"mindestens ein Workspace Owner ist erforderlich\". This directly answers the question.",
+        "answerable": true,
+        "sources": [
+          "kb-workspaces"
+        ],
+        "answer": "Ja, beim Erstellen eines Workspaces muss mindestens ein Workspace Owner eingetragen werden. Es ist sogar erforderlich.",
+        "answer_language": "de",
+        "language_score": 1.0,
+        "point_score": 0.5,
+        "correct_count": 1.0,
+        "incorrect_count": 0.0,
+        "missing_count": 0,
+        "source_score": 1.0,
+        "answerable_score": 1.0
+      },
+      {
+        "id": "op-016",
+        "question": "Wo finde ich die Zugangsdaten für meinen persönlichen Nexus-Zugriff?",
+        "language": "de",
+        "answerable": true,
+        "expected_sources": [
+          "kb-nexus"
+        ],
+        "expected_answer_points": [
+          "persönlichen Zugriff über den Marketplace buchen",
+          "Nexus unterstützt Single Sign-On",
+          "User Token und Passcode in den persönlichen Nexus-Einstellungen abrufen"
+        ]
+      }
+    ],
+    "signature": {
+      "instructions": "You are a helpful assistant tasked with answering questions about One Platform, a platform integrating services like Azure, AWS, and Entra ID. You will be provided with a context containing relevant knowledge base articles and a question. Your task is to answer the question based *exclusively* on the provided context. Respond in the same language as the question (German or English). Carefully analyze the context to identify the answer, and clearly state your reasoning. If the answer cannot be found within the context, or if the question requests real-time information or privileged access, mark \"Answerable\" as `False`. Provide the answer along with the sources from the context where you found the answer. Maintain a formal and informative tone.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "Retrieved knowledge base documents with [doc_id]"
+        },
+        {
+          "prefix": "Question:",
+          "description": "User question in German or English"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answerable:",
+          "description": "True if answerable from context, False otherwise"
+        },
+        {
+          "prefix": "Sources:",
+          "description": "List of document IDs used, e.g. ['kb-ews-cli'], or [] if unanswerable"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "Concise answer covering the key points in the question's language"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.14",
+      "dspy": "3.4.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}
